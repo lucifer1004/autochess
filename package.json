@@ -10,6 +10,11 @@
     "test:unit": "vue-cli-service test:unit",
     "upgrade-interactive": "npm-check --update"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm run lint && lint-staged"
+    }
+  },
   "dependencies": {
     "register-service-worker": "1.6.2",
     "vue": "2.6.7",
@@ -19,11 +24,11 @@
   "devDependencies": {
     "@babel/core": "7.3.4",
     "@babel/runtime-corejs2": "7.3.4",
-    "@types/jest": "24.0.8",
+    "@types/jest": "24.0.9",
     "@types/node": "11.9.5",
     "@types/webpack-env": "1.13.7",
     "@typescript-eslint/eslint-plugin": "1.4.2",
-    "@typescript-eslint/parser": "^1.4.2",
+    "@typescript-eslint/parser": "1.4.2",
     "@vue/babel-preset-app": "3.4.1",
     "@vue/cli-plugin-babel": "3.4.1",
     "@vue/cli-plugin-e2e-cypress": "3.4.1",
@@ -45,7 +50,7 @@
     "css-loader": "2.1.0",
     "eslint": "5.14.1",
     "eslint-loader": "2.1.2",
-    "eslint-plugin-cypress": "^2.2.1",
+    "eslint-plugin-cypress": "2.2.1",
     "eslint-plugin-prettier": "3.0.1",
     "eslint-plugin-vue": "5.2.2",
     "jest": "24.1.0",
@@ -67,6 +72,7 @@
     "vue-loader": "15.6.4",
     "vue-style-loader": "4.1.2",
     "vue-template-compiler": "2.6.7",
-    "webpack": "^4.29.5"
+    "webpack": "4.29.5",
+    "yorkie": "2.0.0"
   }
 }
