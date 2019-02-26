@@ -1,18 +1,32 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="@/assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <img v-if="!playing" alt="AutoChess logo" src="@/assets/autochess.jpg" />
+    <ChessBoard v-if="playing" />
+    <HelloWorld :msg="message" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
+import {Message} from '@/common/types'
+import ChessBoard from '@/components/ChessBoard.vue'
+import HelloWorld from '@/components/HelloWorld.vue'
 
 export default Vue.extend({
   name: 'home',
   components: {
+    ChessBoard,
     HelloWorld,
+  },
+  computed: {
+    playing(): boolean {
+      return this.$store.state.isPlaying
+    },
+    message(): Message {
+      return this.$store.state.isPlaying
+        ? new Message('', 'Stop')
+        : new Message('Welcome to AutoChess', 'Play')
+    },
   },
 })
 </script>

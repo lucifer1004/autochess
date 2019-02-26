@@ -1,0 +1,61 @@
+<template>
+  <td v-on:click="addHero" :style="showImage() ? null : blankCellStyle">
+    <img
+      v-if="showImage()"
+      :alt="chessBoard[(row - 1) * 8 + col - 1]"
+      :src="imageSource()"
+    />
+  </td>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+import {ADD_HERO} from '@/common/mutation-types'
+import {State} from '@/common/types'
+
+export default Vue.extend({
+  name: 'ChessCell',
+  props: {
+    row: Number,
+    col: Number,
+  },
+  data: () => ({
+    blankCellStyle: {
+      backgroundColor: '#80aba9',
+    },
+  }),
+  computed: {
+    chessBoard(): string[] {
+      return this.$store.state.chessBoard
+    },
+  },
+  methods: {
+    showImage(): boolean {
+      return this.chessBoard[(this.row - 1) * 8 + this.col - 1] !== 'Grass'
+    },
+    imageSource(): NodeRequire {
+      return require(`@/assets/heroes/${
+        this.chessBoard[(this.row - 1) * 8 + this.col - 1]
+      }.png`)
+    },
+    addHero(): void {
+      this.$store.commit(ADD_HERO, {row: this.row, col: this.col})
+    },
+  },
+})
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="stylus">
+td
+  border 1px solid black
+  height 60px
+  margin 0
+  padding 0
+  width 60px
+
+img
+  display block
+  height 100%
+  width 100%
+</style>
