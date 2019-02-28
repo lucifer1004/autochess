@@ -7,7 +7,13 @@ export class Message {
   }
 }
 
+export interface GameInfo {
+  chessBoard: string[]
+  gold: number
+  round: number
+}
+
 export interface State {
   isPlaying: boolean
-  chessBoard: string[]
+  gameInfo: GameInfo
 }

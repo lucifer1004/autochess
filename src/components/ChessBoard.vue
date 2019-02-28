@@ -1,18 +1,20 @@
 <template>
   <div id="chess-board">
     <table>
-      <ChessRow v-for="row in rows" :key="row" :row="row" />
+      <ChessRow v-for="row in rows" :key="row" :row="row" :cols="cols" />
     </table>
+    <GameInfo />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import ChessRow from '@/components/ChessRow.vue'
+import GameInfo from '@/components/GameInfo.vue'
 
 export default Vue.extend({
   name: 'ChessBoard',
-  components: {ChessRow},
+  components: {ChessRow, GameInfo},
   props: {
     cols: {type: Number, default: 8},
     rows: {type: Number, default: 8},
@@ -25,8 +27,7 @@ export default Vue.extend({
 #chess-board
   align-items center
   display flex
-  flex-direction column
-
+  justify-content center
 table
   border 1px solid black
   border-collapse collapse

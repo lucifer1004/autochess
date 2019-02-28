@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <ChessCell v-for="col in 8" :key="col" :col="col" :row="row" />
+    <ChessCell v-for="col in cols" :key="col" :col="col" :row="row" />
   </tr>
 </template>
 
@@ -13,6 +13,7 @@ export default Vue.extend({
   components: {ChessCell},
   props: {
     row: Number,
+    cols: {type: Number, default: 8},
   },
 })
 </script>

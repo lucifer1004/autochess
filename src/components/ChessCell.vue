@@ -1,7 +1,13 @@
 <template>
-  <td v-on:click="addHero" :style="showImage() ? null : blankCellStyle">
+  <td 
+    v-on:click="addHero"
+    v-on:dragover.prevent="dragover"
+    v-on:drop="drop"
+    :style="showImage() ? null : blankCellStyle"
+  >
     <img
       v-if="showImage()"
+      v-on:dragstart="drag"
       :alt="chessBoard[(row - 1) * 8 + col - 1]"
       :src="imageSource()"
     />
@@ -10,7 +16,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {ADD_HERO} from '@/common/mutation-types'
+import {ADD_HERO, MOVE_CHESS} from '@/common/mutation-types'
 import {State} from '@/common/types'
 
 export default Vue.extend({
@@ -26,10 +32,25 @@ export default Vue.extend({
   }),
   computed: {
     chessBoard(): string[] {
-      return this.$store.state.chessBoard
+      return this.$store.state.gameInfo.chessBoard
     },
   },
   methods: {
+    drag(event: any) {
+      event.dataTransfer.setData('data', JSON.stringify({
+        row: this.row,
+        col: this.col,
+        hero: this.chessBoard[(this.row - 1) * 8 + this.col - 1]
+      }))
+    },
+    dragover() {},
+    drop(event: any) {
+      const data = JSON.parse(event.dataTransfer.getData('data'))
+      this.$store.commit(MOVE_CHESS, {
+        from: {row: data.row, col: data.col},
+        to: {row: this.row, col: this.col},
+      })
+    },
     showImage(): boolean {
       return this.chessBoard[(this.row - 1) * 8 + this.col - 1] !== 'Grass'
     },
