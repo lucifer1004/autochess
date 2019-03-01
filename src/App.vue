@@ -1,24 +1,24 @@
 <template>
   <v-app dark>
-    <v-container grid-list-md text-xs-center>
+    <v-container grid-list-lg text-xs-center>
       <v-layout justify-center>
         <v-flex xs1>
           <router-link tag="div" to="/">
-            <v-btn fab>
+            <v-btn fab color="green darken-4">
               <v-icon>home</v-icon>
             </v-btn>
           </router-link>
         </v-flex>
         <v-flex xs1>
           <router-link tag="div" to="/game">
-            <v-btn fab>
+            <v-btn fab color="green darken-4">
               <v-icon>games</v-icon>
             </v-btn>
           </router-link>
         </v-flex>
         <v-flex xs1>
           <router-link tag="div" to="/about">
-            <v-btn fab>
+            <v-btn fab color="green darken-4">
               <v-icon>help</v-icon>
             </v-btn>
           </router-link>

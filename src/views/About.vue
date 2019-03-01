@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>About this site</h1>
-    <v-card>
+    <v-card color="green darken-4">
       <v-layout justify-center align-center>
         <v-flex xs3>
           <v-img alt="Vue logo" :src="require('@/assets/logo.png')" max-width=200 />

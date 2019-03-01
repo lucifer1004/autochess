@@ -1,13 +1,4 @@
-interface Skill {
-  name: string
-}
-
-interface Hero {
-  name: string
-  class: string[]
-  cost: number
-  skill: Skill
-}
+import {Hero} from '@/common/types'
 
 export const HEROES: Hero[] = [
   {

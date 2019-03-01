@@ -1,17 +1,21 @@
 <template>
-  <td
+  <v-card
+    flat
+    height=60
+    width=60
     v-on:click="addHero"
     v-on:dragover.prevent="dragover"
     v-on:drop="drop"
-    :style="(row + col) % 2 === 0 ? evenCellStyle : oddCellStyle"
+    :color="(row + col) % 2 === 0 ? 'green lighten-4' : 'green lighten-2'"
   >
     <img
       v-if="showImage()"
       v-on:dragstart="drag"
+      v-on:dblclick="clickImage"
       :alt="chessBoard[(row - 1) * 8 + col - 1]"
       :src="imageSource()"
     />
-  </td>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -58,7 +62,7 @@ export default Vue.extend({
       })
     },
     showImage(): boolean {
-      return this.chessBoard[(this.row - 1) * 8 + this.col - 1] !== 'Grass'
+      return this.chessBoard[(this.row - 1) * 8 + this.col - 1] !== ''
     },
     imageSource(): NodeRequire {
       return require(`@/assets/heroes/${
@@ -68,6 +72,9 @@ export default Vue.extend({
     addHero(): void {
       this.$store.commit(ADD_HERO, {row: this.row, col: this.col})
     },
+    clickImage(): void {
+      console.log(this.chessBoard[(this.row - 1) * 8 + this.col - 1])
+    },
   },
 })
 </script>
@@ -76,8 +83,6 @@ export default Vue.extend({
 <style scoped lang="stylus">
 td
   height 60px
-  margin 0
-  padding 0
   width 60px
 
 img

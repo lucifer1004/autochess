@@ -11,10 +11,11 @@ const localState = {
   gameInfo: gameInfo
     ? JSON.parse(gameInfo)
     : {
-        chessBoard: Array.from({length: 64}, (v, i) => 'Grass'),
+        chessBoard: Array.from({length: 64}, (v, i) => ''),
         gold: 0,
         round: 0,
-        heroes: [],
+        battlefield: [],
+        preparation: [],
         shop: [],
       },
 }

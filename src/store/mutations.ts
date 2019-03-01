@@ -1,10 +1,5 @@
 import * as MUTATION from '@/common/mutation-types'
-import {State} from '@/common/types'
-
-interface Position {
-  row: number
-  col: number
-}
+import {Chess, Position, State} from '@/common/types'
 
 export default {
   [MUTATION.ADD_HERO](state: State, payload: Position) {
@@ -43,9 +38,9 @@ export default {
   [MUTATION.MOVE_CHESS](state: State, payload: {from: Position; to: Position}) {
     const from = (payload.from.row - 1) * 8 + payload.from.col - 1
     const to = (payload.to.row - 1) * 8 + payload.to.col - 1
-    if (state.gameInfo.chessBoard[to] === 'Grass') {
+    if (state.gameInfo.chessBoard[to] === '') {
       state.gameInfo.chessBoard[to] = state.gameInfo.chessBoard[from]
-      state.gameInfo.chessBoard[from] = 'Grass'
+      state.gameInfo.chessBoard[from] = ''
       state.gameInfo.chessBoard = state.gameInfo.chessBoard.slice()
       sessionStorage.setItem(
         'autochess-game-info',
@@ -53,11 +48,17 @@ export default {
       )
     }
   },
+  [MUTATION.BUY_CHESS](state: State, payload: Chess) {
+
+  },
   [MUTATION.RESET](state: State) {
     state.gameInfo = {
-      chessBoard: Array.from({length: 64}, (v, i) => 'Grass'),
+      chessBoard: Array.from({length: 64}, (v, i) => ''),
       gold: 0,
       round: 0,
+      battlefield: [],
+      preparation: [],
+      shop: [],
     }
     sessionStorage.setItem(
       'autochess-game-info',

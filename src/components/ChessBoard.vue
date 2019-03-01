@@ -1,13 +1,13 @@
 <template>
   <div id="chess-board">
-    <v-layout justify-center fill-height>
-      <v-flex xs3>
+    <v-layout wrap>
+      <v-flex xs12 md3>
         <GameInfo />
       </v-flex>
-      <v-flex xs6>
-        <BattleField />
+      <v-flex xs12 md6>
+        <Battlefield />
       </v-flex>
-      <v-flex xs3>
+      <v-flex xs12 md3>
         <Shop />
       </v-flex>
     </v-layout>
@@ -16,12 +16,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import BattleField from '@/components/BattleField.vue'
+import Battlefield from '@/components/Battlefield.vue'
 import GameInfo from '@/components/GameInfo.vue'
 import Shop from '@/components/Shop.vue'
 
 export default Vue.extend({
   name: 'ChessBoard',
-  components: {BattleField, GameInfo, Shop},
+  components: {Battlefield, GameInfo, Shop},
 })
 </script>

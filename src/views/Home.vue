@@ -9,7 +9,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {Message} from '@/common/types'
 import HelloWorld from '@/components/HelloWorld.vue'
 
 export default Vue.extend({
