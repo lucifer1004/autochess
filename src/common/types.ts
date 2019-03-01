@@ -14,6 +14,5 @@ export interface GameInfo {
 }
 
 export interface State {
-  isPlaying: boolean
   gameInfo: GameInfo
 }

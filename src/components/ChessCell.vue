@@ -75,7 +75,6 @@ export default Vue.extend({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
 td
-  border 1px solid black
   height 60px
   margin 0
   padding 0

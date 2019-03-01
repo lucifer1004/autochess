@@ -1,33 +1,37 @@
 <template>
   <v-app dark>
     <v-container grid-list-md text-xs-center>
-      <div id="app">
-        <div id="nav">
-          <router-link to="/">Home</router-link> |
-          <router-link to="/about">About</router-link>
-        </div>
-        <router-view />
-      </div>
+      <v-layout justify-center>
+        <v-flex xs1>
+          <router-link tag="div" to="/">
+            <v-btn fab>
+              <v-icon>home</v-icon>
+            </v-btn>
+          </router-link>
+        </v-flex>
+        <v-flex xs1>
+          <router-link tag="div" to="/game">
+            <v-btn fab>
+              <v-icon>games</v-icon>
+            </v-btn>
+          </router-link>
+        </v-flex>
+        <v-flex xs1>
+          <router-link tag="div" to="/about">
+            <v-btn fab>
+              <v-icon>help</v-icon>
+            </v-btn>
+          </router-link>
+        </v-flex>
+      </v-layout>
+      <router-view />
       <v-footer color="transparent">
-        <v-spacer></v-spacer>
-        <h3 class="headline mb-0">2019 - Gabriel Wu</h3>
+        <v-layout>
+          <v-flex xs3 offset-xs8>
+            <h3 class="headline mb-0">2019 - Gabriel Wu</h3>
+          </v-flex>
+        </v-layout>
       </v-footer>
     </v-container>
   </v-app>
 </template>
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-
-// #nav
-//   padding 30px
-//   a
-//     font-weight bold
-//     color #2c3e50
-//     &.router-link-exact-active
-//       color #42b983
-</style>

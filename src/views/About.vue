@@ -1,5 +1,19 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>About this site</h1>
+    <v-card>
+      <v-layout justify-center align-center>
+        <v-flex xs3>
+          <v-img alt="Vue logo" :src="require('@/assets/logo.png')" max-width=200 />
+        </v-flex>
+        <v-flex xs3>
+          <v-card-text>
+            <h3>
+              This site is built by Vue and Vuetify. Pictures are from Dota2, and the original game was made by Dodoo.
+            </h3>
+          </v-card-text> 
+        </v-flex>
+      </v-layout>
+    </v-card>
   </div>
 </template>

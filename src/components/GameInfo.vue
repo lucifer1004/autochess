@@ -4,13 +4,22 @@
       <v-card-title primary-title>
         <h3 class="headline mb-0">Game Info</h3>
       </v-card-title>
+      <v-layout justify-center>
+        <v-flex xs4> <v-icon>timer</v-icon> {{ round }} </v-flex>
+        <v-flex xs4> <v-icon>attach_money</v-icon> {{ gold }} </v-flex>
+      </v-layout>
       <v-card-text>
-        <p><strong>Round</strong> {{ round }}</p>
-        <p><strong>Gold</strong> {{ gold }}</p>
+        <p>Next round:</p>
+        Basic: +{{ Math.min(round, 5) }} Interest: +{{
+          Math.min(Math.trunc(gold / 10), 5)
+        }}
       </v-card-text>
-      <v-card-actions>
-        <v-btn v-on:click="addRound">Next round</v-btn>
-      </v-card-actions>
+      <v-layout justify-center>
+        <v-card-actions>
+          <v-btn v-on:click="addRound">Next round</v-btn>
+          <v-btn color="warning" v-on:click="reset">Reset</v-btn>
+        </v-card-actions>
+      </v-layout>
     </v-card>
   </div>
 </template>
@@ -32,6 +41,9 @@ export default Vue.extend({
   methods: {
     addRound() {
       this.$store.dispatch(INCREASE_ROUND)
+    },
+    reset() {
+      this.$store.commit(RESET)
     },
   },
 })

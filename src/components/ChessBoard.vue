@@ -1,6 +1,6 @@
 <template>
   <div id="chess-board">
-    <v-layout justify-center fill-height align-space-around>
+    <v-layout justify-center fill-height>
       <v-flex xs3>
         <GameInfo />
       </v-flex>

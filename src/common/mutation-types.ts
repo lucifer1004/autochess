@@ -7,5 +7,3 @@ export const INCREASE_ROUND = 'INCREASE_ROUND'
 export const MOVE_CHESS = 'MOVE_CHESS'
 
 export const RESET = 'RESET'
-
-export const TOGGLE_PLAYING = 'TOGGLE_PLAYING'

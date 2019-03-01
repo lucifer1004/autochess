@@ -4,11 +4,13 @@
       <v-card-title primary-title>
         <h3 class="headline mb-0">Battle</h3>
       </v-card-title>
-      <v-card-text>
-        <table>
-          <ChessRow v-for="row in rows" :key="row" :row="row" :cols="cols" />
-        </table>
-      </v-card-text>
+      <v-layout justify-center>
+        <v-flex xs10>
+          <table>
+            <ChessRow v-for="row in rows" :key="row" :row="row" :cols="cols" />
+          </table>
+        </v-flex>
+      </v-layout>
     </v-card>
   </div>
 </template>
@@ -26,11 +28,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="stylus">
-table
-  border 1px solid black
-  border-collapse collapse
-  margin 10px
-</style>

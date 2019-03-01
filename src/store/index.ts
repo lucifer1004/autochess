@@ -5,11 +5,9 @@ import mutations from '@/store/mutations'
 
 Vue.use(Vuex)
 
-const isPlaying = sessionStorage.getItem('autochess-playing')
 const gameInfo = sessionStorage.getItem('autochess-game-info')
 
 const localState = {
-  isPlaying: isPlaying === 'playing',
   gameInfo: gameInfo
     ? JSON.parse(gameInfo)
     : {
@@ -17,6 +15,7 @@ const localState = {
         gold: 0,
         round: 0,
         heroes: [],
+        shop: [],
       },
 }
 

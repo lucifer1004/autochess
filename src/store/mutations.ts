@@ -24,10 +24,17 @@ export default {
     )
   },
   [MUTATION.INCREASE_ROUND](state: State) {
-    if (state.isPlaying) {
-      state.gameInfo.round += 1
-      state.gameInfo.gold += state.gameInfo.round < 5 ? state.gameInfo.round : 5
-    }
+    state.gameInfo.round += 1
+    if (state.gameInfo.gold >= 100) return
+
+    // Interest
+    state.gameInfo.gold += Math.min(Math.trunc(state.gameInfo.gold / 10), 5)
+
+    // Basic income
+    state.gameInfo.gold += Math.min(state.gameInfo.round, 5)
+
+    state.gameInfo.gold = Math.min(state.gameInfo.gold, 100)
+
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),
@@ -56,13 +63,5 @@ export default {
       'autochess-game-info',
       JSON.stringify(state.gameInfo),
     )
-  },
-  [MUTATION.TOGGLE_PLAYING](state: State) {
-    state.isPlaying = !state.isPlaying
-    sessionStorage.setItem(
-      'autochess-playing',
-      state.isPlaying ? 'playing' : '',
-    )
-    if (!state.isPlaying) sessionStorage.removeItem('autochess-game-info')
   },
 }
