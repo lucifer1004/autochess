@@ -16,6 +16,7 @@ const localState = {
         chessBoard: Array.from({length: 64}, (v, i) => 'Grass'),
         gold: 0,
         round: 0,
+        heroes: [],
       },
 }
 

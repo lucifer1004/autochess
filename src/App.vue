@@ -1,11 +1,19 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app dark>
+    <v-container grid-list-md text-xs-center>
+      <div id="app">
+        <div id="nav">
+          <router-link to="/">Home</router-link> |
+          <router-link to="/about">About</router-link>
+        </div>
+        <router-view />
+      </div>
+      <v-footer color="transparent">
+        <v-spacer></v-spacer>
+        <h3 class="headline mb-0">2019 - Gabriel Wu</h3>
+      </v-footer>
+    </v-container>
+  </v-app>
 </template>
 <style lang="stylus">
 #app
@@ -15,11 +23,11 @@
   text-align center
   color #2c3e50
 
-#nav
-  padding 30px
-  a
-    font-weight bold
-    color #2c3e50
-    &.router-link-exact-active
-      color #42b983
+// #nav
+//   padding 30px
+//   a
+//     font-weight bold
+//     color #2c3e50
+//     &.router-link-exact-active
+//       color #42b983
 </style>

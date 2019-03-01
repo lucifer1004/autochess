@@ -9,7 +9,7 @@ interface Position {
 export default {
   [MUTATION.ADD_HERO](state: State, payload: Position) {
     state.gameInfo.chessBoard[(payload.row - 1) * 8 + payload.col - 1] =
-      'Alchemist'
+      'DragonKnight'
     state.gameInfo.chessBoard = state.gameInfo.chessBoard.slice()
     sessionStorage.setItem(
       'autochess-game-info',
@@ -24,7 +24,10 @@ export default {
     )
   },
   [MUTATION.INCREASE_ROUND](state: State) {
-    if (state.isPlaying) state.gameInfo.round += 1
+    if (state.isPlaying) {
+      state.gameInfo.round += 1
+      state.gameInfo.gold += state.gameInfo.round < 5 ? state.gameInfo.round : 5
+    }
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),

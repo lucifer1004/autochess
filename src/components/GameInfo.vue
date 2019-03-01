@@ -1,9 +1,17 @@
 <template>
   <div id="game-info">
-    <p>Round: {{ round }}</p>
-    <p>Gold: {{ gold }}</p>
-    <button v-on:click="addRound">Click</button>
-    <button v-on:click="reset">Reset</button>
+    <v-card>
+      <v-card-title primary-title>
+        <h3 class="headline mb-0">Game Info</h3>
+      </v-card-title>
+      <v-card-text>
+        <p><strong>Round</strong> {{ round }}</p>
+        <p><strong>Gold</strong> {{ gold }}</p>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn v-on:click="addRound">Next round</v-btn>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 
@@ -25,24 +33,9 @@ export default Vue.extend({
     addRound() {
       this.$store.dispatch(INCREASE_ROUND)
     },
-    reset() {
-      this.$store.commit(RESET)
-    },
   },
 })
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="stylus">
-#game-info
-  border 2px black solid
-  display flex
-  flex-direction column
-  margin 20px
-  padding 10px
-
-p
-  border 1px black solid
-  margin 2px
-  padding 5px
-</style>
+<style scoped lang="stylus"></style>

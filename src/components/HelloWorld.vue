@@ -1,13 +1,21 @@
 <template>
   <div class="hello">
     <h1 v-if="msg.title !== ''">{{ msg.title }}</h1>
-    <button v-on:click="togglePlaying">{{ msg.button }}</button>
+    <v-btn v-if="msg.title === ''" color="primary" v-on:click="reset"
+      >Reset</v-btn
+    >
+    <v-btn
+      :color="msg.title === '' ? 'error' : 'primary'"
+      v-on:click="togglePlaying"
+    >
+      {{ msg.button }}
+    </v-btn>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import {TOGGLE_PLAYING} from '@/common/mutation-types'
+import {RESET, TOGGLE_PLAYING} from '@/common/mutation-types'
 import {Message} from '@/common/types'
 
 export default Vue.extend({
@@ -16,6 +24,9 @@ export default Vue.extend({
     msg: Message,
   },
   methods: {
+    reset() {
+      this.$store.commit(RESET)
+    },
     togglePlaying() {
       this.$store.commit(TOGGLE_PLAYING)
     },
@@ -25,14 +36,6 @@ export default Vue.extend({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-button
-  background-color #42b983
-  border 0
-  border-radius 10px
-  color white
-  font-size 30px
-  padding 5px 20px
-
 a
   color #42b983
 </style>

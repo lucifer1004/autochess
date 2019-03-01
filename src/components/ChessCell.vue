@@ -1,9 +1,9 @@
 <template>
-  <td 
+  <td
     v-on:click="addHero"
     v-on:dragover.prevent="dragover"
     v-on:drop="drop"
-    :style="showImage() ? null : blankCellStyle"
+    :style="(row + col) % 2 === 0 ? evenCellStyle : oddCellStyle"
   >
     <img
       v-if="showImage()"
@@ -26,8 +26,11 @@ export default Vue.extend({
     col: Number,
   },
   data: () => ({
-    blankCellStyle: {
+    evenCellStyle: {
       backgroundColor: '#80aba9',
+    },
+    oddCellStyle: {
+      backgroundColor: '#43676b',
     },
   }),
   computed: {
@@ -37,11 +40,14 @@ export default Vue.extend({
   },
   methods: {
     drag(event: any) {
-      event.dataTransfer.setData('data', JSON.stringify({
-        row: this.row,
-        col: this.col,
-        hero: this.chessBoard[(this.row - 1) * 8 + this.col - 1]
-      }))
+      event.dataTransfer.setData(
+        'data',
+        JSON.stringify({
+          row: this.row,
+          col: this.col,
+          hero: this.chessBoard[(this.row - 1) * 8 + this.col - 1],
+        }),
+      )
     },
     dragover() {},
     drop(event: any) {
