@@ -12,12 +12,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pnpm run lint && lint-staged"
+      "pre-commit": "pnpm run lint"
     }
   },
   "dependencies": {
     "register-service-worker": "1.6.2",
-    "vue": "2.6.7",
+    "vue": "^2.6.8",
     "vue-router": "3.0.2",
     "vuetify": "^1.5.4",
     "vuex": "3.1.0"
@@ -26,8 +26,8 @@
     "@babel/core": "7.3.4",
     "@babel/runtime-corejs2": "7.3.4",
     "@types/jest": "24.0.9",
-    "@types/node": "11.9.5",
-    "@types/webpack-env": "1.13.7",
+    "@types/node": "^11.10.0",
+    "@types/webpack-env": "^1.13.8",
     "@typescript-eslint/eslint-plugin": "1.4.2",
     "@typescript-eslint/parser": "1.4.2",
     "@vue/babel-preset-app": "3.4.1",
@@ -54,6 +54,7 @@
     "eslint-plugin-cypress": "2.2.1",
     "eslint-plugin-prettier": "3.0.1",
     "eslint-plugin-vue": "5.2.2",
+    "husky": "1.3.1",
     "jest": "24.1.0",
     "jest-environment-jsdom": "24.0.0",
     "jest-serializer-vue": "2.0.2",
@@ -70,10 +71,10 @@
     "typescript": "3.3.3333",
     "url-loader": "1.1.2",
     "vue-jest": "3.0.3",
-    "vue-loader": "15.6.4",
+    "vue-loader": "^15.7.0",
     "vue-style-loader": "4.1.2",
-    "vue-template-compiler": "2.6.7",
-    "webpack": "4.29.5",
+    "vue-template-compiler": "^2.6.8",
+    "webpack": "^4.29.6",
     "yorkie": "2.0.0"
   }
 }

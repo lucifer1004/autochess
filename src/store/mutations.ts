@@ -2,6 +2,13 @@ import * as MUTATION from '@/common/mutation-types'
 import {Chess, Position, State} from '@/common/types'
 
 export default {
+  [MUTATION.TOGGLE_LOCKED](state: State) {
+    state.gameInfo.locked = !state.gameInfo.locked
+    sessionStorage.setItem(
+      'autochess-game-info',
+      JSON.stringify(state.gameInfo),
+    )
+  },
   [MUTATION.ADD_HERO](state: State, payload: Position) {
     state.gameInfo.chessBoard[(payload.row - 1) * 8 + payload.col - 1] =
       'DragonKnight'
@@ -48,11 +55,10 @@ export default {
       )
     }
   },
-  [MUTATION.BUY_CHESS](state: State, payload: Chess) {
-
-  },
+  [MUTATION.BUY_CHESS](state: State, payload: Chess) {},
   [MUTATION.RESET](state: State) {
     state.gameInfo = {
+      locked: false,
       chessBoard: Array.from({length: 64}, (v, i) => ''),
       gold: 0,
       round: 0,

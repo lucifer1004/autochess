@@ -2,7 +2,11 @@
   <div class="home">
     <h1>Welcome to AutoChess</h1>
     <v-layout justify-center>
-      <v-img alt="AutoChess logo" :src="require('@/assets/autochess.jpg')" max-width=800 />
+      <v-img
+        alt="AutoChess logo"
+        :src="require('@/assets/autochess.jpg')"
+        max-width="800"
+      />
     </v-layout>
   </div>
 </template>

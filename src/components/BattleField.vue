@@ -1,6 +1,6 @@
 <template>
-  <v-card color="green darken-4">
-    <v-card-title primary-title>
+  <v-card color="green darken-4" style="padding-bottom: 20px">
+    <v-card-title>
       <h3 class="headline mb-0">Battlefield</h3>
     </v-card-title>
     <ChessRow v-for="row in rows" :key="row" :row="row" :cols="cols" />

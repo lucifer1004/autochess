@@ -1,26 +1,39 @@
 <template>
-  <div id="game-info">
-    <v-card color="green darken-4">
-      <v-card-title primary-title>
-        <h3 class="headline mb-0">Game Info</h3>
-      </v-card-title>
+  <v-card flat color="transparent">
+    <v-card-title>
+      <h3 class="headline mb-0">Game Info</h3>
+    </v-card-title>
+    <v-layout justify-center>
+      <v-flex xs4>
+        <v-icon large>timer</v-icon>
+        <h4>{{ round }}</h4>
+      </v-flex>
+      <v-flex xs4>
+        <v-icon large>attach_money</v-icon>
+        <h4>{{ gold }}</h4>
+      </v-flex>
+    </v-layout>
+    <v-card-text>
+      <p>Next round:</p>
+      Basic: +{{ Math.min(round, 5) }} Interest: +{{
+        Math.min(Math.trunc(gold / 10), 5)
+      }}
+    </v-card-text>
+    <v-card-actions>
       <v-layout justify-center>
-        <v-flex xs4> <v-icon large>timer</v-icon> <h4>{{ round }}</h4> </v-flex>
-        <v-flex xs4> <v-icon large>attach_money</v-icon> <h4>{{ gold }}</h4> </v-flex>
+        <v-flex xs4
+          ><v-btn color="green lighten-2" v-on:click="addRound" icon
+            ><v-icon>play_arrow</v-icon></v-btn
+          ></v-flex
+        >
+        <v-flex xs4
+          ><v-btn color="warning" v-on:click="reset" icon
+            ><v-icon>autorenew</v-icon></v-btn
+          ></v-flex
+        >
       </v-layout>
-      <v-card-text>
-        <p>Next round:</p>
-        Basic: +{{ Math.min(round, 5) }} Interest: +{{
-          Math.min(Math.trunc(gold / 10), 5)
-        }}
-      </v-card-text>
-      <v-card-actions>
-        <v-spacer />
-        <v-btn color="green lighten-2" v-on:click="addRound" icon><v-icon>play_arrow</v-icon></v-btn>
-        <v-btn color="warning" v-on:click="reset" icon><v-icon>autorenew</v-icon></v-btn>
-      </v-card-actions>
-    </v-card>
-  </div>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script lang="ts">
