@@ -57,7 +57,7 @@ export default {
 
     // Gain exp
     if (state.gameInfo.level < 10) {
-      state.gameInfo.exp += 5
+      state.gameInfo.exp += 4
       state.gameInfo.gold -= 5
       if (state.gameInfo.exp >= LEVELUP_REQUIREMENT[state.gameInfo.level]) {
         state.gameInfo.level += 1

@@ -36,6 +36,31 @@ export const CHESSES_ONE: Chess[] = [
     isElf: true,
     isDemonHunter: true,
   },
+  {
+    name: 'BatRider',
+    isTroll: true,
+    isKnight: true,
+  },
+  {
+    name: 'Enchantress',
+    isBeast: true,
+    isDruid: true,
+  },
+  {
+    name: 'OgreMagi',
+    isOgre: true,
+    isMage: true,
+  },
+  {
+    name: 'ShadowShaman',
+    isTroll: true,
+    isShaman: true,
+  },
+  {
+    name: 'Tinker',
+    isGoblin: true,
+    isMech: true,
+  },
 ].map(obj => Object.assign(obj, {cost: 1, star: 1}))
 
 export const CHESSES_TWO: Chess[] = [
@@ -94,6 +119,21 @@ export const CHESSES_TWO: Chess[] = [
     name: 'Slark',
     isNaga: true,
     isAssassin: true,
+  },
+  {
+    name: 'NaturesProphet',
+    isElf: true,
+    isDruid: true,
+  },
+  {
+    name: 'QueenOfPain',
+    isDemon: true,
+    isAssassin: true,
+  },
+  {
+    name: 'WitchDoctor',
+    isTroll: true,
+    isWarlock: true,
   },
 ].map(obj => Object.assign(obj, {cost: 2, star: 1}))
 
@@ -164,6 +204,16 @@ export const CHESSES_THREE: Chess[] = [
     isDragon: true,
     isAssassin: true,
   },
+  {
+    name: 'Lina',
+    isHuman: true,
+    isMage: true,
+  },
+  {
+    name: 'WindRanger',
+    isElf: true,
+    isHunter: true,
+  },
 ].map(obj => Object.assign(obj, {cost: 3, star: 1}))
 
 export const CHESSES_FOUR: Chess[] = [
@@ -208,6 +258,21 @@ export const CHESSES_FOUR: Chess[] = [
     isTroll: true,
     isWarrior: true,
   },
+  {
+    name: 'Disruptor',
+    isOrc: true,
+    isShaman: true,
+  },
+  {
+    name: 'KeeperOfTheLight',
+    isHuman: true,
+    isMage: true,
+  },
+  {
+    name: 'Necrophos',
+    isUndead: true,
+    isWarlock: true,
+  },
 ].map(obj => Object.assign(obj, {cost: 4, star: 1}))
 
 export const CHESSES_FIVE: Chess[] = [
@@ -224,6 +289,21 @@ export const CHESSES_FIVE: Chess[] = [
   {
     name: 'Gyrocopter',
     isDwarf: true,
+    isMech: true,
+  },
+  {
+    name: 'DeathProphet',
+    isUndead: true,
+    isWarlock: true,
+  },
+  {
+    name: 'Enigma',
+    isElemental: true,
+    isWarlock: true,
+  },
+  {
+    name: 'Techies',
+    isGoblin: true,
     isMech: true,
   },
 ].map(obj => Object.assign(obj, {cost: 5, star: 1}))
