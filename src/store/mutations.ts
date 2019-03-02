@@ -49,6 +49,9 @@ const checkEffects = (state: State): void => {
 
   // Beast
   if (classStat.Beast !== undefined) {
+    state.gameInfo.effects.is2Beasts = false
+    state.gameInfo.effects.is4Beasts = false
+    state.gameInfo.effects.is6Beasts = false
     if (classStat.Beast >= 2) {
       state.gameInfo.effects.is2Beasts = true
       if (classStat.Beast >= 4) {
@@ -57,64 +60,61 @@ const checkEffects = (state: State): void => {
           state.gameInfo.effects.is6Beasts = true
         }
       }
-    } else {
-      state.gameInfo.effects.is2Beasts = false
-      state.gameInfo.effects.is4Beasts = false
-      state.gameInfo.effects.is6Beasts = false
     }
   }
 
   // DemonHunter
 
   if (classStat.DemonHunter !== undefined) {
+    state.gameInfo.effects.isDemonHunter = false
+    state.gameInfo.effects.is2DemonHunters = false
     if (classStat.DemonHunter >= 1) {
       state.gameInfo.effects.isDemonHunter = true
       if (classStat.DemonHunter >= 2) {
         state.gameInfo.effects.is2DemonHunters = true
       }
-    } else {
-      state.gameInfo.effects.isDemonHunter = false
-      state.gameInfo.effects.is2DemonHunters = false
     }
   }
 
   // Demon
   if (classStat.Demon !== undefined) {
+    state.gameInfo.effects.isDemon = false
     if (
       classStat.Demon === 1 ||
       (classStat.Demon > 1 && state.gameInfo.effects.is2DemonHunters)
     )
       state.gameInfo.effects.isDemon = true
-    else state.gameInfo.effects.isDemon = false
   }
 
   // Dragon
   if (classStat.Dragon !== undefined) {
+    state.gameInfo.effects.is3Dragons = false
     if (classStat.Dragon >= 3) state.gameInfo.effects.is3Dragons = true
-    else state.gameInfo.effects.is3Dragons = false
   }
 
   // Dwarf
   if (classStat.Dwarf !== undefined) {
+    state.gameInfo.effects.isDwarf = false
     if (classStat.Dwarf >= 1) state.gameInfo.effects.isDwarf = true
-    else state.gameInfo.effects.isDwarf = false
   }
 
   // Elemental
   if (classStat.Elemental !== undefined) {
+    state.gameInfo.effects.is2Elementals = false
+    state.gameInfo.effects.is4Elementals = false
     if (classStat.Elemental >= 2) {
       state.gameInfo.effects.is2Elementals = true
       if (classStat.Elemental >= 4) {
         state.gameInfo.effects.is4Elementals = true
       }
-    } else {
-      state.gameInfo.effects.is2Elementals = false
-      state.gameInfo.effects.is4Elementals = false
     }
   }
 
   // Elf
   if (classStat.Elf !== undefined) {
+    state.gameInfo.effects.is3Elfs = false
+    state.gameInfo.effects.is6Elfs = false
+    state.gameInfo.effects.is9Elfs = false
     if (classStat.Elf >= 3) {
       state.gameInfo.effects.is3Elfs = true
       if (classStat.Elf >= 6) {
@@ -123,28 +123,26 @@ const checkEffects = (state: State): void => {
           state.gameInfo.effects.is9Elfs = true
         }
       }
-    } else {
-      state.gameInfo.effects.is3Elfs = false
-      state.gameInfo.effects.is6Elfs = false
-      state.gameInfo.effects.is9Elfs = false
     }
   }
 
   // Goblin
   if (classStat.Goblin !== undefined) {
+    state.gameInfo.effects.is3Goblins = false
+    state.gameInfo.effects.is6Goblins = false
     if (classStat.Goblin >= 3) {
       state.gameInfo.effects.is3Goblins = true
       if (classStat.Goblin >= 6) {
         state.gameInfo.effects.is6Goblins = true
       }
-    } else {
-      state.gameInfo.effects.is3Goblins = false
-      state.gameInfo.effects.is6Goblins = false
     }
   }
 
   // Human
   if (classStat.Human !== undefined) {
+    state.gameInfo.effects.is2Humans = false
+    state.gameInfo.effects.is4Humans = false
+    state.gameInfo.effects.is6Humans = false
     if (classStat.Human >= 2) {
       state.gameInfo.effects.is2Humans = true
       if (classStat.Human >= 4) {
@@ -153,73 +151,68 @@ const checkEffects = (state: State): void => {
           state.gameInfo.effects.is6Humans = true
         }
       }
-    } else {
-      state.gameInfo.effects.is2Humans = false
-      state.gameInfo.effects.is4Humans = false
-      state.gameInfo.effects.is6Humans = false
     }
   }
 
   // Naga
   if (classStat.Naga !== undefined) {
+    state.gameInfo.effects.is2Nagas = false
+    state.gameInfo.effects.is4Nagas = false
     if (classStat.Naga >= 2) {
       state.gameInfo.effects.is2Nagas = true
       if (classStat.Naga >= 4) {
         state.gameInfo.effects.is4Nagas = true
       }
-    } else {
-      state.gameInfo.effects.is2Nagas = false
-      state.gameInfo.effects.is4Nagas = false
     }
   }
 
   // Ogre
   if (classStat.Ogre !== undefined) {
+    state.gameInfo.effects.isOgre = false
     if (classStat.Ogre >= 1) state.gameInfo.effects.isOgre = true
-    else state.gameInfo.effects.isOgre = false
   }
 
   // Orc
   if (classStat.Orc !== undefined) {
+    state.gameInfo.effects.is2Orcs = false
+    state.gameInfo.effects.is4Orcs = false
     if (classStat.Orc >= 2) {
       state.gameInfo.effects.is2Orcs = true
       if (classStat.Orc >= 4) {
         state.gameInfo.effects.is4Orcs = true
       }
-    } else {
-      state.gameInfo.effects.is2Orcs = false
-      state.gameInfo.effects.is4Orcs = false
     }
   }
 
   // Troll
   if (classStat.Troll !== undefined) {
+    state.gameInfo.effects.is2Trolls = false
+    state.gameInfo.effects.is4Trolls = false
     if (classStat.Troll >= 2) {
       state.gameInfo.effects.is2Trolls = true
       if (classStat.Troll >= 4) {
         state.gameInfo.effects.is4Trolls = true
       }
-    } else {
-      state.gameInfo.effects.is2Trolls = false
-      state.gameInfo.effects.is4Trolls = false
     }
   }
 
   // Undead
   if (classStat.Undead !== undefined) {
+    state.gameInfo.effects.is2Undeads = false
+    state.gameInfo.effects.is4Undeads = false
     if (classStat.Undead >= 2) {
       state.gameInfo.effects.is2Undeads = true
       if (classStat.Undead >= 4) {
         state.gameInfo.effects.is4Undeads = true
       }
-    } else {
-      state.gameInfo.effects.is2Undeads = false
-      state.gameInfo.effects.is4Undeads = false
     }
   }
 
   // Assassin
   if (classStat.Assassin !== undefined) {
+    state.gameInfo.effects.is3Assassins = false
+    state.gameInfo.effects.is6Assassins = false
+    state.gameInfo.effects.is9Assassins = false
     if (classStat.Assassin >= 3) {
       state.gameInfo.effects.is3Assassins = true
       if (classStat.Assassin >= 6) {
@@ -228,41 +221,38 @@ const checkEffects = (state: State): void => {
           state.gameInfo.effects.is9Assassins = true
         }
       }
-    } else {
-      state.gameInfo.effects.is3Assassins = false
-      state.gameInfo.effects.is6Assassins = false
-      state.gameInfo.effects.is9Assassins = false
     }
   }
 
   // Druid
   if (classStat.Druid !== undefined) {
+    state.gameInfo.effects.is2Druids = false
+    state.gameInfo.effects.is4Druids = false
     if (classStat.Druid >= 2) {
       state.gameInfo.effects.is2Druids = true
       if (classStat.Druid >= 4) {
         state.gameInfo.effects.is4Druids = true
       }
-    } else {
-      state.gameInfo.effects.is2Druids = false
-      state.gameInfo.effects.is4Druids = false
     }
   }
 
   // Hunter
   if (classStat.Hunter !== undefined) {
+    state.gameInfo.effects.is3Hunters = false
+    state.gameInfo.effects.is6Hunters = false
     if (classStat.Hunter >= 3) {
       state.gameInfo.effects.is3Hunters = true
       if (classStat.Hunter >= 6) {
         state.gameInfo.effects.is6Hunters = true
       }
-    } else {
-      state.gameInfo.effects.is3Hunters = false
-      state.gameInfo.effects.is6Hunters = false
     }
   }
 
   // Knight
   if (classStat.Knight !== undefined) {
+    state.gameInfo.effects.is2Knights = false
+    state.gameInfo.effects.is4Knights = false
+    state.gameInfo.effects.is6Knights = false
     if (classStat.Knight >= 2) {
       state.gameInfo.effects.is2Knights = true
       if (classStat.Knight >= 4) {
@@ -271,60 +261,56 @@ const checkEffects = (state: State): void => {
           state.gameInfo.effects.is6Knights = true
         }
       }
-    } else {
-      state.gameInfo.effects.is2Knights = false
-      state.gameInfo.effects.is4Knights = false
-      state.gameInfo.effects.is6Knights = false
     }
   }
 
   // Mage
   if (classStat.Mage !== undefined) {
+    state.gameInfo.effects.is3Mages = false
+    state.gameInfo.effects.is6Mages = false
     if (classStat.Mage >= 3) {
       state.gameInfo.effects.is3Mages = true
       if (classStat.Mage >= 6) {
         state.gameInfo.effects.is6Mages = true
       }
-    } else {
-      state.gameInfo.effects.is3Mages = false
-      state.gameInfo.effects.is6Mages = false
     }
   }
 
   // Mech
   if (classStat.Mech !== undefined) {
+    state.gameInfo.effects.is2Mechs = false
+    state.gameInfo.effects.is4Mechs = false
     if (classStat.Mech >= 2) {
       state.gameInfo.effects.is2Mechs = true
       if (classStat.Mech >= 4) {
         state.gameInfo.effects.is4Mechs = true
       }
-    } else {
-      state.gameInfo.effects.is2Mechs = false
-      state.gameInfo.effects.is4Mechs = false
     }
   }
 
   // Shaman
   if (classStat.Shaman !== undefined) {
+    state.gameInfo.effects.is2Shamans = false
     if (classStat.Shaman >= 2) state.gameInfo.effects.is2Shamans = true
-    else state.gameInfo.effects.is2Shamans = false
   }
 
   // Warlock
   if (classStat.Warlock !== undefined) {
+    state.gameInfo.effects.is3Warlocks = false
+    state.gameInfo.effects.is6Warlocks = false
     if (classStat.Warlock >= 3) {
       state.gameInfo.effects.is3Warlocks = true
       if (classStat.Warlock >= 6) {
         state.gameInfo.effects.is6Warlocks = true
       }
-    } else {
-      state.gameInfo.effects.is3Warlocks = false
-      state.gameInfo.effects.is6Warlocks = false
     }
   }
 
   // Warrior
   if (classStat.Warrior !== undefined) {
+    state.gameInfo.effects.is3Warriors = false
+    state.gameInfo.effects.is6Warriors = false
+    state.gameInfo.effects.is9Warriors = false
     if (classStat.Warrior >= 3) {
       state.gameInfo.effects.is3Warriors = true
       if (classStat.Warrior >= 6) {
@@ -333,17 +319,13 @@ const checkEffects = (state: State): void => {
           state.gameInfo.effects.is9Warriors = true
         }
       }
-    } else {
-      state.gameInfo.effects.is3Warriors = false
-      state.gameInfo.effects.is6Warriors = false
-      state.gameInfo.effects.is9Warriors = false
     }
   }
 }
 
-const mergeChess = (battlefield: Chess[]): void => {
+const mergeChess = (state: State): void => {
   const stats: ChessStat[] = []
-  battlefield.forEach(chess => {
+  state.gameInfo.battlefield.forEach(chess => {
     const index = stats.findIndex(
       stat => stat.name === chess.name && stat.star === chess.star,
     )
@@ -353,38 +335,145 @@ const mergeChess = (battlefield: Chess[]): void => {
         star: chess.star,
         cost: chess.cost,
         position: chess.position,
+        Druid: !!chess.Druid,
         count: 1,
       })
     } else stats[index].count += 1
   })
 
-  // No need to merge
-  if (stats.filter(stat => stat.count === 3).length === 0) return
-
-  const {name, star, cost, position} = stats.filter(stat => stat.count === 3)[0]
-
-  // Star has an upper limit of 3
-  if (star === 3) return
-
-  // Remove original chesses
-  while (
-    battlefield.findIndex(
-      chess => chess.name === name && chess.star === star,
-    ) !== -1
-  ) {
-    const indexToRemove = battlefield.findIndex(
-      chess => chess.name === name && chess.star === star,
+  // No druid effect
+  if (!state.gameInfo.effects.is2Druids) {
+    const filteredStats = stats.filter(
+      stat => stat.count === 3 && stat.star <= 2,
     )
-    battlefield.splice(indexToRemove, 1)
+
+    filteredStats.forEach(stat => {
+      const {name, star, cost, position} = stat
+
+      // Remove original chesses
+      for (let i = 0; i < 3; i++) {
+        const indexToRemove = state.gameInfo.battlefield.findIndex(
+          chess => chess.name === name && chess.star === star,
+        )
+        state.gameInfo.battlefield.splice(indexToRemove, 1)
+      }
+
+      // Add upgraded chess
+      const newChess = Object.assign(
+        {},
+        CHESSES[star][cost + 1 - 2 * star].find(chess => chess.name === name),
+        {position: position},
+      )
+      state.gameInfo.battlefield.push(newChess)
+    })
   }
 
-  // Add upgraded chess
-  const newChess = Object.assign(
-    {},
-    CHESSES[star][cost + 1 - 2 * star].find(chess => chess.name === name),
-    {position: position},
-  )
-  battlefield.push(newChess)
+  // 2-druid effect
+  if (state.gameInfo.effects.is2Druids && !state.gameInfo.effects.is4Druids) {
+    const filteredStats = stats.filter(
+      stat =>
+        (stat.count === 3 &&
+          ((stat.star <= 2 && !stat.Druid) ||
+            (stat.star === 2 && stat.Druid))) ||
+        (stat.count >= 2 && stat.star === 1 && stat.Druid),
+    )
+
+    filteredStats.forEach(stat => {
+      if (
+        stat.count === 3 &&
+        ((stat.star <= 2 && !stat.Druid) || (stat.star === 2 && stat.Druid))
+      ) {
+        const {name, star, cost, position} = stat
+
+        // Remove original chesses
+        for (let i = 0; i < 3; i++) {
+          const indexToRemove = state.gameInfo.battlefield.findIndex(
+            chess => chess.name === name && chess.star === star,
+          )
+          state.gameInfo.battlefield.splice(indexToRemove, 1)
+        }
+
+        // Add upgraded chess
+        const newChess = Object.assign(
+          {},
+          CHESSES[star][cost + 1 - 2 * star].find(chess => chess.name === name),
+          {position: position},
+        )
+        state.gameInfo.battlefield.push(newChess)
+      }
+
+      if (stat.count >= 2 && stat.star === 1 && stat.Druid) {
+        const {name, star, cost, position} = stat
+
+        // Remove original chesses
+        for (let i = 0; i < 2; i++) {
+          const indexToRemove = state.gameInfo.battlefield.findIndex(
+            chess => chess.name === name && chess.star === star,
+          )
+          state.gameInfo.battlefield.splice(indexToRemove, 1)
+        }
+
+        // Add upgraded chess
+        const newChess = Object.assign(
+          {},
+          CHESSES[star][cost + 1 - 2 * star].find(chess => chess.name === name),
+          {position: position},
+        )
+        state.gameInfo.battlefield.push(newChess)
+      }
+    })
+  }
+
+  // 4-druid effect
+  if (state.gameInfo.effects.is4Druids) {
+    const filteredStats = stats.filter(
+      stat =>
+        stat.star <= 2 &&
+        ((stat.count === 3 && !stat.Druid) || (stat.count >= 2 && stat.Druid)),
+    )
+
+    filteredStats.forEach(stat => {
+      if (stat.count === 3 && !stat.Druid) {
+        const {name, star, cost, position} = stat
+
+        // Remove original chesses
+        for (let i = 0; i < 3; i++) {
+          const indexToRemove = state.gameInfo.battlefield.findIndex(
+            chess => chess.name === name && chess.star === star,
+          )
+          state.gameInfo.battlefield.splice(indexToRemove, 1)
+        }
+
+        // Add upgraded chess
+        const newChess = Object.assign(
+          {},
+          CHESSES[star][cost + 1 - 2 * star].find(chess => chess.name === name),
+          {position: position},
+        )
+        state.gameInfo.battlefield.push(newChess)
+      }
+
+      if (stat.count >= 2 && stat.Druid) {
+        const {name, star, cost, position} = stat
+
+        // Remove original chesses
+        for (let i = 0; i < 2; i++) {
+          const indexToRemove = state.gameInfo.battlefield.findIndex(
+            chess => chess.name === name && chess.star === star,
+          )
+          state.gameInfo.battlefield.splice(indexToRemove, 1)
+        }
+
+        // Add upgraded chess
+        const newChess = Object.assign(
+          {},
+          CHESSES[star][cost + 1 - 2 * star].find(chess => chess.name === name),
+          {position: position},
+        )
+        state.gameInfo.battlefield.push(newChess)
+      }
+    })
+  }
 }
 
 export default {
@@ -503,8 +592,8 @@ export default {
     checkEffects(state)
 
     // Merge twice in case there are consecutive upgrades
-    mergeChess(state.gameInfo.battlefield)
-    mergeChess(state.gameInfo.battlefield)
+    mergeChess(state)
+    mergeChess(state)
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),

@@ -146,5 +146,6 @@ export interface ChessStat {
   star: number
   cost: number
   position?: Position
+  Druid: boolean
   count: number
 }
