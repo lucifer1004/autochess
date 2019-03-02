@@ -16,6 +16,11 @@ export const CHESSES_ONE: Chess[] = [
     isElemental: true,
     isWarrior: true,
   },
+  {
+    name: 'Clockwerk',
+    isGoblin: true,
+    isMech: true,
+  },
 ].map(obj => Object.assign(obj, {cost: 1, star: 1}))
 
 export const CHESSES_TWO: Chess[] = [
@@ -28,6 +33,27 @@ export const CHESSES_TWO: Chess[] = [
     name: 'Juggernaut',
     isOrc: true,
     isWarrior: true,
+  },
+  {
+    name: 'TreantProtector',
+    isElf: true,
+    isDruid: true,
+  },
+  {
+    name: 'Morphling',
+    isElemental: true,
+    isAssassin: true,
+  },
+  {
+    name: 'Puck',
+    isDragon: true,
+    isElf: true,
+    isMage: true,
+  },
+  {
+    name: 'CrystalMaiden',
+    isHuman: true,
+    isMage: true,
   },
 ].map(obj => Object.assign(obj, {cost: 2, star: 1}))
 
@@ -61,6 +87,11 @@ export const CHESSES_FOUR: Chess[] = [
     isDragon: true,
     isHuman: true,
     isKnight: true,
+  },
+  {
+    name: 'Kunkka',
+    isHuman: true,
+    isWarrior: true,
   },
 ].map(obj => Object.assign(obj, {cost: 4, star: 1}))
 

@@ -9,7 +9,7 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
     "upgrade-interactive": "npm-check --update",
-    "now-build": "pnpm run build"
+    "now-build": "yarn build"
   },
   "husky": {
     "hooks": {
