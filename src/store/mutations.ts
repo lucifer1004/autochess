@@ -64,6 +64,11 @@ export default {
         state.gameInfo.exp -= LEVELUP_REQUIREMENT[state.gameInfo.level]
       }
     }
+
+    sessionStorage.setItem(
+      'autochess-game-info',
+      JSON.stringify(state.gameInfo),
+    )
   },
   [MUTATION.MOVE_CHESS](
     state: State,
@@ -88,6 +93,7 @@ export default {
     )[0]
     chess.position = payload.targetPosition
     state.gameInfo.battlefield = state.gameInfo.battlefield.slice()
+
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),
@@ -132,6 +138,11 @@ export default {
     )
     state.gameInfo.preparation.push(state.gameInfo.battlefield[index])
     state.gameInfo.battlefield.splice(index, 1)
+
+    sessionStorage.setItem(
+      'autochess-game-info',
+      JSON.stringify(state.gameInfo),
+    )
   },
   [MUTATION.BUY_CHESS](state: State, num: number) {
     const chess = state.gameInfo.shop[num]

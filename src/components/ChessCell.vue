@@ -2,6 +2,9 @@
   <v-card
     :height="cellSize"
     :width="cellSize"
+    draggable
+    v-on:dblclick="withdrawChess"
+    v-on:dragstart="drag"
     v-on:dragover.prevent="dragover"
     v-on:drop="drop"
     :color="
@@ -11,14 +14,13 @@
         ? 'green lighten-4'
         : 'green lighten-2'
     "
+    :img="chessInCell ? imageSource() : null"
   >
-    <img
-      v-if="chessInTheCell"
-      v-on:dragstart="drag"
-      v-on:dblclick="withdrawChess"
-      :alt="chessInTheCell.name"
-      :src="imageSource()"
-    />
+    <v-layout justify-center v-if="chessInCell">
+      <v-flex>
+        {{ '⭐'.repeat(chessInCell.star) }}
+      </v-flex>
+    </v-layout>
   </v-card>
 </template>
 
@@ -41,7 +43,7 @@ export default Vue.extend({
     battlefield(): Chess[] {
       return this.$store.state.gameInfo.battlefield
     },
-    chessInTheCell(): Chess {
+    chessInCell(): Chess {
       return this.battlefield.filter(
         (chess: Chess) =>
           chess.position &&
@@ -103,7 +105,7 @@ export default Vue.extend({
       }
     },
     imageSource(): NodeRequire {
-      return require(`@/assets/heroes/${this.chessInTheCell.name}.png`)
+      return require(`@/assets/heroes/${this.chessInCell.name}.png`)
     },
     withdrawChess() {
       this.$store.commit(WITHDRAW_CHESS, {row: this.row, col: this.col})
