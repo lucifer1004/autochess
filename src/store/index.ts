@@ -16,6 +16,7 @@ const localState = {
         round: 0,
         level: 0,
         exp: 0,
+        effects: {},
         battlefield: [],
         preparation: [],
         shop: [],

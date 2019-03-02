@@ -1,7 +1,11 @@
 import {CHESSES} from '@/common/chesses'
-import {LEVELUP_REQUIREMENT, PROBABILITY} from '@/common/constants'
+import {
+  CHESS_CLASSES,
+  LEVELUP_REQUIREMENT,
+  PROBABILITY,
+} from '@/common/constants'
 import * as MUTATION from '@/common/mutation-types'
-import {Chess, ChessStat, Position, State} from '@/common/types'
+import {Chess, ChessStat, ClassStat, Position, State} from '@/common/types'
 
 const getRandomChess = (level: number): Chess => {
   const rand = Math.random()
@@ -17,6 +21,324 @@ const getRandomChess = (level: number): Chess => {
       Math.floor(Math.random() * CHESSES[0][cost - 1].length)
     ],
   )
+}
+
+// Satyr
+const checkSatyr = (state: State): void => {
+  const satyrCount = new Set(
+    state.gameInfo.preparation
+      .filter(chess => (chess as any).Satyr)
+      .map(chess => chess.name),
+  ).size
+
+  if (satyrCount !== undefined) {
+    if (satyrCount >= 1) state.gameInfo.effects.isSatyr = true
+    else state.gameInfo.effects.isSatyr = false
+  }
+}
+
+const checkEffects = (state: State): void => {
+  const classStat: ClassStat = {}
+  CHESS_CLASSES.map(chessClass => {
+    ;(classStat as any)[chessClass] = new Set(
+      state.gameInfo.battlefield
+        .filter(chess => (chess as any)[chessClass])
+        .map(chess => chess.name),
+    ).size
+  })
+
+  // Beast
+  if (classStat.Beast !== undefined) {
+    if (classStat.Beast >= 2) {
+      state.gameInfo.effects.is2Beasts = true
+      if (classStat.Beast >= 4) {
+        state.gameInfo.effects.is4Beasts = true
+        if (classStat.Beast >= 6) {
+          state.gameInfo.effects.is6Beasts = true
+        }
+      }
+    } else {
+      state.gameInfo.effects.is2Beasts = false
+      state.gameInfo.effects.is4Beasts = false
+      state.gameInfo.effects.is6Beasts = false
+    }
+  }
+
+  // DemonHunter
+
+  if (classStat.DemonHunter !== undefined) {
+    if (classStat.DemonHunter >= 1) {
+      state.gameInfo.effects.isDemonHunter = true
+      if (classStat.DemonHunter >= 2) {
+        state.gameInfo.effects.is2DemonHunters = true
+      }
+    } else {
+      state.gameInfo.effects.isDemonHunter = false
+      state.gameInfo.effects.is2DemonHunters = false
+    }
+  }
+
+  // Demon
+  if (classStat.Demon !== undefined) {
+    if (
+      classStat.Demon === 1 ||
+      (classStat.Demon > 1 && state.gameInfo.effects.is2DemonHunters)
+    )
+      state.gameInfo.effects.isDemon = true
+    else state.gameInfo.effects.isDemon = false
+  }
+
+  // Dragon
+  if (classStat.Dragon !== undefined) {
+    if (classStat.Dragon >= 3) state.gameInfo.effects.is3Dragons = true
+    else state.gameInfo.effects.is3Dragons = false
+  }
+
+  // Dwarf
+  if (classStat.Dwarf !== undefined) {
+    if (classStat.Dwarf >= 1) state.gameInfo.effects.isDwarf = true
+    else state.gameInfo.effects.isDwarf = false
+  }
+
+  // Elemental
+  if (classStat.Elemental !== undefined) {
+    if (classStat.Elemental >= 2) {
+      state.gameInfo.effects.is2Elementals = true
+      if (classStat.Elemental >= 4) {
+        state.gameInfo.effects.is4Elementals = true
+      }
+    } else {
+      state.gameInfo.effects.is2Elementals = false
+      state.gameInfo.effects.is4Elementals = false
+    }
+  }
+
+  // Elf
+  if (classStat.Elf !== undefined) {
+    if (classStat.Elf >= 3) {
+      state.gameInfo.effects.is3Elfs = true
+      if (classStat.Elf >= 6) {
+        state.gameInfo.effects.is6Elfs = true
+        if (classStat.Elf >= 9) {
+          state.gameInfo.effects.is9Elfs = true
+        }
+      }
+    } else {
+      state.gameInfo.effects.is3Elfs = false
+      state.gameInfo.effects.is6Elfs = false
+      state.gameInfo.effects.is9Elfs = false
+    }
+  }
+
+  // Goblin
+  if (classStat.Goblin !== undefined) {
+    if (classStat.Goblin >= 3) {
+      state.gameInfo.effects.is3Goblins = true
+      if (classStat.Goblin >= 6) {
+        state.gameInfo.effects.is6Goblins = true
+      }
+    } else {
+      state.gameInfo.effects.is3Goblins = false
+      state.gameInfo.effects.is6Goblins = false
+    }
+  }
+
+  // Human
+  if (classStat.Human !== undefined) {
+    if (classStat.Human >= 2) {
+      state.gameInfo.effects.is2Humans = true
+      if (classStat.Human >= 4) {
+        state.gameInfo.effects.is4Humans = true
+        if (classStat.Human >= 6) {
+          state.gameInfo.effects.is6Humans = true
+        }
+      }
+    } else {
+      state.gameInfo.effects.is2Humans = false
+      state.gameInfo.effects.is4Humans = false
+      state.gameInfo.effects.is6Humans = false
+    }
+  }
+
+  // Naga
+  if (classStat.Naga !== undefined) {
+    if (classStat.Naga >= 2) {
+      state.gameInfo.effects.is2Nagas = true
+      if (classStat.Naga >= 4) {
+        state.gameInfo.effects.is4Nagas = true
+      }
+    } else {
+      state.gameInfo.effects.is2Nagas = false
+      state.gameInfo.effects.is4Nagas = false
+    }
+  }
+
+  // Ogre
+  if (classStat.Ogre !== undefined) {
+    if (classStat.Ogre >= 1) state.gameInfo.effects.isOgre = true
+    else state.gameInfo.effects.isOgre = false
+  }
+
+  // Orc
+  if (classStat.Orc !== undefined) {
+    if (classStat.Orc >= 2) {
+      state.gameInfo.effects.is2Orcs = true
+      if (classStat.Orc >= 4) {
+        state.gameInfo.effects.is4Orcs = true
+      }
+    } else {
+      state.gameInfo.effects.is2Orcs = false
+      state.gameInfo.effects.is4Orcs = false
+    }
+  }
+
+  // Troll
+  if (classStat.Troll !== undefined) {
+    if (classStat.Troll >= 2) {
+      state.gameInfo.effects.is2Trolls = true
+      if (classStat.Troll >= 4) {
+        state.gameInfo.effects.is4Trolls = true
+      }
+    } else {
+      state.gameInfo.effects.is2Trolls = false
+      state.gameInfo.effects.is4Trolls = false
+    }
+  }
+
+  // Undead
+  if (classStat.Undead !== undefined) {
+    if (classStat.Undead >= 2) {
+      state.gameInfo.effects.is2Undeads = true
+      if (classStat.Undead >= 4) {
+        state.gameInfo.effects.is4Undeads = true
+      }
+    } else {
+      state.gameInfo.effects.is2Undeads = false
+      state.gameInfo.effects.is4Undeads = false
+    }
+  }
+
+  // Assassin
+  if (classStat.Assassin !== undefined) {
+    if (classStat.Assassin >= 3) {
+      state.gameInfo.effects.is3Assassins = true
+      if (classStat.Assassin >= 6) {
+        state.gameInfo.effects.is6Assassins = true
+        if (classStat.Assassin >= 9) {
+          state.gameInfo.effects.is9Assassins = true
+        }
+      }
+    } else {
+      state.gameInfo.effects.is3Assassins = false
+      state.gameInfo.effects.is6Assassins = false
+      state.gameInfo.effects.is9Assassins = false
+    }
+  }
+
+  // Druid
+  if (classStat.Druid !== undefined) {
+    if (classStat.Druid >= 2) {
+      state.gameInfo.effects.is2Druids = true
+      if (classStat.Druid >= 4) {
+        state.gameInfo.effects.is4Druids = true
+      }
+    } else {
+      state.gameInfo.effects.is2Druids = false
+      state.gameInfo.effects.is4Druids = false
+    }
+  }
+
+  // Hunter
+  if (classStat.Hunter !== undefined) {
+    if (classStat.Hunter >= 3) {
+      state.gameInfo.effects.is3Hunters = true
+      if (classStat.Hunter >= 6) {
+        state.gameInfo.effects.is6Hunters = true
+      }
+    } else {
+      state.gameInfo.effects.is3Hunters = false
+      state.gameInfo.effects.is6Hunters = false
+    }
+  }
+
+  // Knight
+  if (classStat.Knight !== undefined) {
+    if (classStat.Knight >= 2) {
+      state.gameInfo.effects.is2Knights = true
+      if (classStat.Knight >= 4) {
+        state.gameInfo.effects.is4Knights = true
+        if (classStat.Knight >= 6) {
+          state.gameInfo.effects.is6Knights = true
+        }
+      }
+    } else {
+      state.gameInfo.effects.is2Knights = false
+      state.gameInfo.effects.is4Knights = false
+      state.gameInfo.effects.is6Knights = false
+    }
+  }
+
+  // Mage
+  if (classStat.Mage !== undefined) {
+    if (classStat.Mage >= 3) {
+      state.gameInfo.effects.is3Mages = true
+      if (classStat.Mage >= 6) {
+        state.gameInfo.effects.is6Mages = true
+      }
+    } else {
+      state.gameInfo.effects.is3Mages = false
+      state.gameInfo.effects.is6Mages = false
+    }
+  }
+
+  // Mech
+  if (classStat.Mech !== undefined) {
+    if (classStat.Mech >= 2) {
+      state.gameInfo.effects.is2Mechs = true
+      if (classStat.Mech >= 4) {
+        state.gameInfo.effects.is4Mechs = true
+      }
+    } else {
+      state.gameInfo.effects.is2Mechs = false
+      state.gameInfo.effects.is4Mechs = false
+    }
+  }
+
+  // Shaman
+  if (classStat.Shaman !== undefined) {
+    if (classStat.Shaman >= 2) state.gameInfo.effects.is2Shamans = true
+    else state.gameInfo.effects.is2Shamans = false
+  }
+
+  // Warlock
+  if (classStat.Warlock !== undefined) {
+    if (classStat.Warlock >= 3) {
+      state.gameInfo.effects.is3Warlocks = true
+      if (classStat.Warlock >= 6) {
+        state.gameInfo.effects.is6Warlocks = true
+      }
+    } else {
+      state.gameInfo.effects.is3Warlocks = false
+      state.gameInfo.effects.is6Warlocks = false
+    }
+  }
+
+  // Warrior
+  if (classStat.Warrior !== undefined) {
+    if (classStat.Warrior >= 3) {
+      state.gameInfo.effects.is3Warriors = true
+      if (classStat.Warrior >= 6) {
+        state.gameInfo.effects.is6Warriors = true
+        if (classStat.Warrior >= 9) {
+          state.gameInfo.effects.is9Warriors = true
+        }
+      }
+    } else {
+      state.gameInfo.effects.is3Warriors = false
+      state.gameInfo.effects.is6Warriors = false
+      state.gameInfo.effects.is9Warriors = false
+    }
+  }
 }
 
 const mergeChess = (battlefield: Chess[]): void => {
@@ -177,6 +499,9 @@ export default {
     state.gameInfo.preparation.splice(payload.num, 1)
     state.gameInfo.preparation = state.gameInfo.preparation.slice()
 
+    checkSatyr(state)
+    checkEffects(state)
+
     // Merge twice in case there are consecutive upgrades
     mergeChess(state.gameInfo.battlefield)
     mergeChess(state.gameInfo.battlefield)
@@ -197,6 +522,9 @@ export default {
     )
     state.gameInfo.preparation.push(state.gameInfo.battlefield[index])
     state.gameInfo.battlefield.splice(index, 1)
+
+    checkSatyr(state)
+    checkEffects(state)
 
     sessionStorage.setItem(
       'autochess-game-info',
@@ -223,6 +551,8 @@ export default {
     state.gameInfo.shop[num] = null
     state.gameInfo.shop = state.gameInfo.shop.slice()
 
+    checkSatyr(state)
+
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),
@@ -234,6 +564,8 @@ export default {
     state.gameInfo.gold = Math.min(state.gameInfo.gold + chess.cost, 100)
     state.gameInfo.preparation.splice(num, 1)
     state.gameInfo.preparation = state.gameInfo.preparation.slice()
+
+    checkSatyr(state)
 
     sessionStorage.setItem(
       'autochess-game-info',
@@ -258,6 +590,7 @@ export default {
       round: 0,
       level: 0,
       exp: 0,
+      effects: {},
       battlefield: [],
       preparation: [],
       shop: [],

@@ -25,6 +25,16 @@
         Math.min(Math.trunc(gold / 10), 5)
       }}
     </v-card-text>
+    <v-card-text>
+      <p
+        v-for="entry in Object.entries(effects).filter(
+          entry => entry[1] === true,
+        )"
+        :key="entry[0]"
+      >
+        {{ entry[0].substring(2) }}
+      </p>
+    </v-card-text>
     <v-card-actions>
       <v-layout justify-center>
         <v-flex xs4>
@@ -50,6 +60,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import {INCREASE_ROUND, RESET, GAIN_EXP} from '@/common/mutation-types'
+import {Effect} from '@/common/types'
 
 export default Vue.extend({
   name: 'GameInfo',
@@ -62,6 +73,9 @@ export default Vue.extend({
     },
     level(): number {
       return this.$store.state.gameInfo.level
+    },
+    effects(): Effect {
+      return this.$store.state.gameInfo.effects
     },
     onBattlefield(): number {
       return this.$store.state.gameInfo.battlefield.length
