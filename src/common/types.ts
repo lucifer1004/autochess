@@ -1,3 +1,5 @@
+export declare type ChessCost = 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE'
+
 export interface Position {
   row: number
   col: number

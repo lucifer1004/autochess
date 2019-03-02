@@ -1,12 +1,19 @@
-import {CHESSES_ALL} from '@/common/chesses'
-import {LEVELUP_REQUIREMENT} from '@/common/constants'
+import {CHESSES} from '@/common/chesses'
+import {LEVELUP_REQUIREMENT, PROBABILITY} from '@/common/constants'
 import * as MUTATION from '@/common/mutation-types'
-import {Chess, Position, State} from '@/common/types'
+import {Chess, ChessCost, Position, State} from '@/common/types'
 
-const getRandomChess = (star: number): Chess => {
+const getRandomChess = (level: number): Chess => {
+  const rand = Math.random()
+  let COST: ChessCost
+  if (rand < PROBABILITY.ONE[level]) COST = 'ONE'
+  else if (rand < PROBABILITY.TWO[level]) COST = 'TWO'
+  else if (rand < PROBABILITY.THREE[level]) COST = 'THREE'
+  else if (rand < PROBABILITY.FOUR[level]) COST = 'FOUR'
+  else COST = 'FIVE'
   return Object.assign(
     {},
-    CHESSES_ALL[Math.floor(Math.random() * CHESSES_ALL.length)],
+    CHESSES[COST][Math.floor(Math.random() * CHESSES[COST].length)],
   )
 }
 
@@ -31,10 +38,6 @@ export default {
       state.gameInfo.gold = Math.min(state.gameInfo.gold, 100)
     }
 
-    // Refresh shop unless locked
-    if (!state.gameInfo.locked)
-      state.gameInfo.shop = Array.from({length: 5}, (v, k) => getRandomChess(1))
-
     // Automatically gain exp
     if (state.gameInfo.level < 10) {
       state.gameInfo.exp += 1
@@ -44,14 +47,18 @@ export default {
       }
     }
 
+    // Refresh shop unless locked
+    if (!state.gameInfo.locked)
+      state.gameInfo.shop = Array.from({length: 5}, (v, k) =>
+        getRandomChess(state.gameInfo.level),
+      )
+
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),
     )
   },
   [MUTATION.GAIN_EXP](state: State) {
-    console.log('read books')
-
     // Need enough gold to gain exp
     if (state.gameInfo.gold < 5) return
 
@@ -184,7 +191,9 @@ export default {
   [MUTATION.REFRESH_SHOP](state: State) {
     if (state.gameInfo.gold < 2) return
     state.gameInfo.gold -= 2
-    state.gameInfo.shop = Array.from({length: 5}, (v, k) => getRandomChess(1))
+    state.gameInfo.shop = Array.from({length: 5}, (v, k) =>
+      getRandomChess(state.gameInfo.level),
+    )
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),

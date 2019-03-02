@@ -1,6 +1,6 @@
 import {Chess} from '@/common/types'
 
-export const CHESSES_ONE: Chess[] = [
+const CHESSES_ONE: Chess[] = [
   {
     name: 'Axe',
     isOrc: true,
@@ -63,7 +63,7 @@ export const CHESSES_ONE: Chess[] = [
   },
 ].map(obj => Object.assign(obj, {cost: 1, star: 1}))
 
-export const CHESSES_TWO: Chess[] = [
+const CHESSES_TWO: Chess[] = [
   {
     name: 'BeastMaster',
     isOrc: true,
@@ -137,7 +137,7 @@ export const CHESSES_TWO: Chess[] = [
   },
 ].map(obj => Object.assign(obj, {cost: 2, star: 1}))
 
-export const CHESSES_THREE: Chess[] = [
+const CHESSES_THREE: Chess[] = [
   {
     name: 'Lycan',
     isBeast: true,
@@ -216,7 +216,7 @@ export const CHESSES_THREE: Chess[] = [
   },
 ].map(obj => Object.assign(obj, {cost: 3, star: 1}))
 
-export const CHESSES_FOUR: Chess[] = [
+const CHESSES_FOUR: Chess[] = [
   {
     name: 'Alchemist',
     isGoblin: true,
@@ -275,7 +275,7 @@ export const CHESSES_FOUR: Chess[] = [
   },
 ].map(obj => Object.assign(obj, {cost: 4, star: 1}))
 
-export const CHESSES_FIVE: Chess[] = [
+const CHESSES_FIVE: Chess[] = [
   {
     name: 'Lich',
     isUndead: true,
@@ -308,10 +308,10 @@ export const CHESSES_FIVE: Chess[] = [
   },
 ].map(obj => Object.assign(obj, {cost: 5, star: 1}))
 
-export const CHESSES_ALL = [
-  ...CHESSES_ONE,
-  ...CHESSES_TWO,
-  ...CHESSES_THREE,
-  ...CHESSES_FOUR,
-  ...CHESSES_FIVE,
-]
+export const CHESSES = {
+  ONE: CHESSES_ONE,
+  TWO: CHESSES_TWO,
+  THREE: CHESSES_THREE,
+  FOUR: CHESSES_FOUR,
+  FIVE: CHESSES_FIVE,
+}
