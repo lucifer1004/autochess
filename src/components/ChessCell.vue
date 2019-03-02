@@ -14,6 +14,7 @@
     <img
       v-if="chessInTheCell"
       v-on:dragstart="drag"
+      v-on:dblclick="withdrawChess"
       :alt="chessInTheCell.name"
       :src="imageSource()"
     />
@@ -22,7 +23,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {DISPATCH_CHESS, MOVE_CHESS} from '@/common/mutation-types'
+import {
+  DISPATCH_CHESS,
+  MOVE_CHESS,
+  WITHDRAW_CHESS,
+} from '@/common/mutation-types'
 import {Chess, State} from '@/common/types'
 
 export default Vue.extend({
@@ -82,6 +87,9 @@ export default Vue.extend({
     },
     imageSource(): NodeRequire {
       return require(`@/assets/heroes/${this.chessInTheCell.name}.png`)
+    },
+    withdrawChess() {
+      this.$store.commit(WITHDRAW_CHESS, {row: this.row, col: this.col})
     },
   },
 })

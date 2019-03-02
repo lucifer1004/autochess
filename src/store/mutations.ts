@@ -93,15 +93,39 @@ export default {
       JSON.stringify(state.gameInfo),
     )
   },
+  [MUTATION.WITHDRAW_CHESS](state: State, from: Position) {
+    // You should have room in the preparation room
+    if (state.gameInfo.preparation.length >= 8) return
+
+    const index = state.gameInfo.battlefield.findIndex(
+      chess =>
+        !!chess.position &&
+        chess.position.row === from.row &&
+        chess.position.col === from.col,
+    )
+    state.gameInfo.preparation.push(state.gameInfo.battlefield[index])
+    state.gameInfo.battlefield.splice(index, 1)
+  },
   [MUTATION.BUY_CHESS](state: State, num: number) {
     const chess = state.gameInfo.shop[num]
     if (chess === null) return
+
+    // You should have enough gold to buy the chess
     if (state.gameInfo.gold < chess.cost) return
+
+    // You should have room in the preparation room
     if (state.gameInfo.preparation.length >= 8) return
+
+    // Buying chess consumes gold
     state.gameInfo.gold -= chess.cost
+
+    // The chess will go to preparation room first
     state.gameInfo.preparation.push(chess)
+
+    // Remove the chess from the shop
     state.gameInfo.shop[num] = null
     state.gameInfo.shop = state.gameInfo.shop.slice()
+
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),
@@ -113,6 +137,7 @@ export default {
     state.gameInfo.gold = Math.min(state.gameInfo.gold + chess.cost, 100)
     state.gameInfo.preparation.splice(num, 1)
     state.gameInfo.preparation = state.gameInfo.preparation.slice()
+
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),
