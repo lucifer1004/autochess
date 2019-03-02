@@ -12,6 +12,12 @@
         <v-icon large>attach_money</v-icon>
         <h4>{{ gold }}</h4>
       </v-flex>
+      <v-flex xs4>
+        <v-icon large>person</v-icon>
+        <h4 :style="onBattlefield > level ? 'color: red' : ''">
+          {{ `${onBattlefield}/${level}` }}
+        </h4>
+      </v-flex>
     </v-layout>
     <v-card-text>
       <p>Next round:</p>
@@ -27,6 +33,11 @@
           </v-btn>
         </v-flex>
         <v-flex xs4>
+          <v-btn color="green lighten-2" v-on:click="gainExp" icon>
+            <v-icon>book</v-icon>
+          </v-btn>
+        </v-flex>
+        <v-flex xs4>
           <v-btn color="warning" v-on:click="reset" icon>
             <v-icon>autorenew</v-icon>
           </v-btn>
@@ -38,7 +49,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {INCREASE_ROUND, RESET} from '@/common/mutation-types'
+import {INCREASE_ROUND, RESET, GAIN_EXP} from '@/common/mutation-types'
 
 export default Vue.extend({
   name: 'GameInfo',
@@ -49,10 +60,19 @@ export default Vue.extend({
     round(): number {
       return this.$store.state.gameInfo.round
     },
+    level(): number {
+      return this.$store.state.gameInfo.level
+    },
+    onBattlefield(): number {
+      return this.$store.state.gameInfo.battlefield.length
+    },
   },
   methods: {
     increaseRound() {
       this.$store.dispatch(INCREASE_ROUND)
+    },
+    gainExp() {
+      this.$store.commit(GAIN_EXP)
     },
     reset() {
       this.$store.commit(RESET)

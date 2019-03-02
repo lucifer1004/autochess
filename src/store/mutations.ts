@@ -1,4 +1,5 @@
-import {CHESSES_ALL} from '@/common/constants'
+import {CHESSES_ALL} from '@/common/chesses'
+import {LEVELUP_REQUIREMENT} from '@/common/constants'
 import * as MUTATION from '@/common/mutation-types'
 import {Chess, Position, State} from '@/common/types'
 
@@ -30,13 +31,39 @@ export default {
       state.gameInfo.gold = Math.min(state.gameInfo.gold, 100)
     }
 
+    // Refresh shop unless locked
     if (!state.gameInfo.locked)
       state.gameInfo.shop = Array.from({length: 5}, (v, k) => getRandomChess(1))
+
+    // Automatically gain exp
+    if (state.gameInfo.level < 10) {
+      state.gameInfo.exp += 1
+      if (state.gameInfo.exp >= LEVELUP_REQUIREMENT[state.gameInfo.level]) {
+        state.gameInfo.level += 1
+        state.gameInfo.exp = 0
+      }
+    }
 
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),
     )
+  },
+  [MUTATION.GAIN_EXP](state: State) {
+    console.log('read books')
+
+    // Need enough gold to gain exp
+    if (state.gameInfo.gold < 5) return
+
+    // Gain exp
+    if (state.gameInfo.level < 10) {
+      state.gameInfo.exp += 5
+      state.gameInfo.gold -= 5
+      if (state.gameInfo.exp >= LEVELUP_REQUIREMENT[state.gameInfo.level]) {
+        state.gameInfo.level += 1
+        state.gameInfo.exp -= LEVELUP_REQUIREMENT[state.gameInfo.level]
+      }
+    }
   },
   [MUTATION.MOVE_CHESS](
     state: State,
@@ -157,6 +184,8 @@ export default {
       locked: false,
       gold: 0,
       round: 0,
+      level: 0,
+      exp: 0,
       battlefield: [],
       preparation: [],
       shop: [],

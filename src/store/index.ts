@@ -14,6 +14,8 @@ const localState = {
         locked: false,
         gold: 0,
         round: 0,
+        level: 0,
+        exp: 0,
         battlefield: [],
         preparation: [],
         shop: [],

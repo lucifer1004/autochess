@@ -46,6 +46,8 @@ export interface Chess {
 export interface GameInfo {
   locked: boolean
   gold: number
+  level: number
+  exp: number
   round: number
   battlefield: Chess[]
   preparation: Chess[]
