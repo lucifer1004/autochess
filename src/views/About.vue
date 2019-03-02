@@ -14,7 +14,7 @@
           <v-card-text>
             <h3>
               This site is built by Vue and Vuetify. Pictures are from Dota2,
-              and the original game was made by Dodoo.
+              and the original game was made by Drodo Games.
             </h3>
           </v-card-text>
         </v-flex>

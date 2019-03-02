@@ -1,6 +1,5 @@
 <template>
   <v-card
-    flat
     height="45"
     v-on:click="addHero"
     v-on:dragover.prevent="dragover"

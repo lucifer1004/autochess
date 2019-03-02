@@ -14,6 +14,8 @@ export const BUY_CHESS = 'BUY_CHESS'
 
 export const SELL_CHESS = 'SELL_CHESS'
 
+export const REFRESH_SHOP = 'REFRESH_SHOP'
+
 export const RESET = 'RESET'
 
 export const TOGGLE_LOCKED = 'TOGGLE_LOCKED'
