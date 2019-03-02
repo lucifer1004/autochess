@@ -27,9 +27,7 @@
     </v-card-text>
     <v-card-text>
       <p
-        v-for="entry in Object.entries(effects).filter(
-          entry => entry[1] === true,
-        )"
+        v-for="entry in Object.entries(effects).filter(entry => entry[1])"
         :key="entry[0]"
       >
         {{ entry[0].substring(2) }}
