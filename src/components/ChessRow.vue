@@ -1,8 +1,6 @@
 <template>
   <v-layout align-center justify-center>
-    <v-flex v-for="col in cols" :key="col" xs2 md1>
-      <ChessCell :col="col" :row="row" />
-    </v-flex>
+    <ChessCell v-for="col in cols" :key="col" :col="col" :row="row" />
   </v-layout>
 </template>
 

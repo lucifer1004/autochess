@@ -1,6 +1,7 @@
 <template>
   <v-card
-    height="45"
+    :height="cellSize"
+    :width="cellSize"
     v-on:dragover.prevent="dragover"
     v-on:drop="drop"
     :color="
@@ -47,6 +48,22 @@ export default Vue.extend({
           chess.position.row === this.row &&
           chess.position.col === this.col,
       )[0]
+    },
+    cellSize(): number {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs':
+          return 30
+        case 'sm':
+          return 40
+        case 'md':
+          return 50
+        case 'lg':
+          return 60
+        case 'xl':
+          return 80
+        default:
+          return 60
+      }
     },
   },
   methods: {
@@ -97,12 +114,7 @@ export default Vue.extend({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-td
-  height 60px
-  width 60px
-
 img
-  display block
   height 100%
   width 100%
 </style>
