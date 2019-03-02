@@ -19,7 +19,7 @@
                 :src="require(`@/assets/heroes/${preparation[i - 1].name}.png`)"
               />
             </v-flex>
-            <v-flex xs4>⭐️</v-flex>
+            <v-flex xs4>{{ '⭐️'.repeat(preparation[i - 1].star) }}</v-flex>
             <v-btn icon color="error" v-on:click="sellChess(i - 1)">
               <v-icon>delete</v-icon>
             </v-btn>

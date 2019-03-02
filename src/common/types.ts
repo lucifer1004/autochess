@@ -1,5 +1,3 @@
-export declare type ChessCost = 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE'
-
 export interface Position {
   row: number
   col: number
@@ -62,4 +60,12 @@ export interface State {
 
 export interface Skill {
   name: string
+}
+
+export interface ChessStat {
+  name: string
+  star: number
+  cost: number
+  position?: Position
+  count: number
 }

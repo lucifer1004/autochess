@@ -1,20 +1,68 @@
 import {CHESSES} from '@/common/chesses'
 import {LEVELUP_REQUIREMENT, PROBABILITY} from '@/common/constants'
 import * as MUTATION from '@/common/mutation-types'
-import {Chess, ChessCost, Position, State} from '@/common/types'
+import {Chess, ChessStat, Position, State} from '@/common/types'
 
 const getRandomChess = (level: number): Chess => {
   const rand = Math.random()
-  let COST: ChessCost
-  if (rand < PROBABILITY.ONE[level]) COST = 'ONE'
-  else if (rand < PROBABILITY.TWO[level]) COST = 'TWO'
-  else if (rand < PROBABILITY.THREE[level]) COST = 'THREE'
-  else if (rand < PROBABILITY.FOUR[level]) COST = 'FOUR'
-  else COST = 'FIVE'
+  let cost
+  if (rand < PROBABILITY.ONE[level]) cost = 1
+  else if (rand < PROBABILITY.TWO[level]) cost = 2
+  else if (rand < PROBABILITY.THREE[level]) cost = 3
+  else if (rand < PROBABILITY.FOUR[level]) cost = 4
+  else cost = 5
   return Object.assign(
     {},
-    CHESSES[COST][Math.floor(Math.random() * CHESSES[COST].length)],
+    CHESSES[0][cost - 1][
+      Math.floor(Math.random() * CHESSES[0][cost - 1].length)
+    ],
   )
+}
+
+const mergeChess = (battlefield: Chess[]): void => {
+  const stats: ChessStat[] = []
+  battlefield.forEach(chess => {
+    const index = stats.findIndex(
+      stat => stat.name === chess.name && stat.star === chess.star,
+    )
+    if (index === -1) {
+      stats.push({
+        name: chess.name,
+        star: chess.star,
+        cost: chess.cost,
+        position: chess.position,
+        count: 1,
+      })
+    } else stats[index].count += 1
+  })
+
+  // No need to merge
+  if (stats.filter(stat => stat.count === 3).length === 0) return
+
+  const {name, star, cost, position} = stats.filter(stat => stat.count === 3)[0]
+
+  // Star has an upper limit of 3
+  if (star === 3) return
+
+  // Remove original chesses
+  while (
+    battlefield.findIndex(
+      chess => chess.name === name && chess.star === star,
+    ) !== -1
+  ) {
+    const indexToRemove = battlefield.findIndex(
+      chess => chess.name === name && chess.star === star,
+    )
+    battlefield.splice(indexToRemove, 1)
+  }
+
+  // Add upgraded chess
+  const newChess = Object.assign(
+    {},
+    CHESSES[star][cost + 1 - 2 * star].find(chess => chess.name === name),
+    {position: position},
+  )
+  battlefield.push(newChess)
 }
 
 export default {
@@ -128,6 +176,10 @@ export default {
     state.gameInfo.battlefield.push(chess)
     state.gameInfo.preparation.splice(payload.num, 1)
     state.gameInfo.preparation = state.gameInfo.preparation.slice()
+
+    // Merge twice in case there are consecutive upgrades
+    mergeChess(state.gameInfo.battlefield)
+    mergeChess(state.gameInfo.battlefield)
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),
