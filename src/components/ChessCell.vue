@@ -1,16 +1,20 @@
 <template>
   <v-card
     height="45"
-    v-on:click="addHero"
     v-on:dragover.prevent="dragover"
     v-on:drop="drop"
-    :color="(row + col) % 2 === 0 ? 'green lighten-4' : 'green lighten-2'"
+    :color="
+      row <= 4
+        ? 'grey'
+        : (row + col) % 2 === 0
+        ? 'green lighten-4'
+        : 'green lighten-2'
+    "
   >
     <img
-      v-if="showImage()"
+      v-if="chessInTheCell"
       v-on:dragstart="drag"
-      v-on:dblclick="clickImage"
-      :alt="chessBoard[(row - 1) * 8 + col - 1]"
+      :alt="chessInTheCell.name"
       :src="imageSource()"
     />
   </v-card>
@@ -18,8 +22,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {ADD_HERO, MOVE_CHESS} from '@/common/mutation-types'
-import {State} from '@/common/types'
+import {DISPATCH_CHESS, MOVE_CHESS} from '@/common/mutation-types'
+import {Chess, State} from '@/common/types'
 
 export default Vue.extend({
   name: 'ChessCell',
@@ -27,51 +31,57 @@ export default Vue.extend({
     row: Number,
     col: Number,
   },
-  data: () => ({
-    evenCellStyle: {
-      backgroundColor: '#80aba9',
-    },
-    oddCellStyle: {
-      backgroundColor: '#43676b',
-    },
-  }),
   computed: {
-    chessBoard(): string[] {
-      return this.$store.state.gameInfo.chessBoard
+    battlefield(): Chess[] {
+      return this.$store.state.gameInfo.battlefield
+    },
+    chessInTheCell(): Chess {
+      return this.battlefield.filter(
+        (chess: Chess) =>
+          chess.position &&
+          chess.position.row === this.row &&
+          chess.position.col === this.col,
+      )[0]
     },
   },
   methods: {
     drag(event: any) {
       event.dataTransfer.setData(
-        'data',
+        MOVE_CHESS,
         JSON.stringify({
           row: this.row,
           col: this.col,
-          hero: this.chessBoard[(this.row - 1) * 8 + this.col - 1],
         }),
       )
     },
     dragover() {},
     drop(event: any) {
-      const data = JSON.parse(event.dataTransfer.getData('data'))
-      this.$store.commit(MOVE_CHESS, {
-        from: {row: data.row, col: data.col},
-        to: {row: this.row, col: this.col},
-      })
-    },
-    showImage(): boolean {
-      return this.chessBoard[(this.row - 1) * 8 + this.col - 1] !== ''
+      // Cannot move chess to row 1-4
+      if (this.row <= 4) return
+
+      if (event.dataTransfer.getData(MOVE_CHESS)) {
+        const from = JSON.parse(event.dataTransfer.getData(MOVE_CHESS))
+        this.$store.commit(MOVE_CHESS, {
+          from: from,
+          targetPosition: {
+            row: this.row,
+            col: this.col,
+          },
+        })
+      }
+      if (event.dataTransfer.getData(DISPATCH_CHESS)) {
+        const num = JSON.parse(event.dataTransfer.getData(DISPATCH_CHESS))
+        this.$store.commit(DISPATCH_CHESS, {
+          num: num,
+          targetPosition: {
+            row: this.row,
+            col: this.col,
+          },
+        })
+      }
     },
     imageSource(): NodeRequire {
-      return require(`@/assets/heroes/${
-        this.chessBoard[(this.row - 1) * 8 + this.col - 1]
-      }.png`)
-    },
-    addHero(): void {
-      this.$store.commit(ADD_HERO, {row: this.row, col: this.col})
-    },
-    clickImage(): void {
-      console.log(this.chessBoard[(this.row - 1) * 8 + this.col - 1])
+      return require(`@/assets/heroes/${this.chessInTheCell.name}.png`)
     },
   },
 })

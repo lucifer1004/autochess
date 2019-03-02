@@ -15,6 +15,7 @@
               <v-img
                 :alt="preparation[i - 1].name"
                 draggable
+                v-on:dragstart="drag($event, i - 1)"
                 :src="require(`@/assets/heroes/${preparation[i - 1].name}.png`)"
               />
             </v-flex>
@@ -30,7 +31,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import {SELL_CHESS} from '@/common/mutation-types'
+import {SELL_CHESS, DISPATCH_CHESS} from '@/common/mutation-types'
 import {Chess} from '@/common/types'
 
 export default Vue.extend({
@@ -41,6 +42,9 @@ export default Vue.extend({
     },
   },
   methods: {
+    drag(event: any, num: number) {
+      event.dataTransfer.setData(DISPATCH_CHESS, JSON.stringify(num))
+    },
     sellChess(num: number) {
       this.$store.commit(SELL_CHESS, num)
     },

@@ -21,16 +21,16 @@
     </v-card-text>
     <v-card-actions>
       <v-layout justify-center>
-        <v-flex xs4
-          ><v-btn color="green lighten-2" v-on:click="addRound" icon
-            ><v-icon>play_arrow</v-icon></v-btn
-          ></v-flex
-        >
-        <v-flex xs4
-          ><v-btn color="warning" v-on:click="reset" icon
-            ><v-icon>autorenew</v-icon></v-btn
-          ></v-flex
-        >
+        <v-flex xs4>
+          <v-btn color="green lighten-2" v-on:click="increaseRound" icon>
+            <v-icon>play_arrow</v-icon>
+          </v-btn>
+        </v-flex>
+        <v-flex xs4>
+          <v-btn color="warning" v-on:click="reset" icon>
+            <v-icon>autorenew</v-icon>
+          </v-btn>
+        </v-flex>
       </v-layout>
     </v-card-actions>
   </v-card>
@@ -51,7 +51,7 @@ export default Vue.extend({
     },
   },
   methods: {
-    addRound() {
+    increaseRound() {
       this.$store.dispatch(INCREASE_ROUND)
     },
     reset() {

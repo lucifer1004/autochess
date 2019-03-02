@@ -14,11 +14,7 @@
               />
             </v-flex>
             <v-flex xs4>💰{{ shop[i - 1].cost }}</v-flex>
-            <v-btn
-              icon
-              color="green lighten-2"
-              v-on:click="buyChess(i - 1)"
-            >
+            <v-btn icon color="green lighten-2" v-on:click="buyChess(i - 1)">
               <v-icon>payment</v-icon>
             </v-btn>
           </v-layout>
@@ -28,7 +24,11 @@
         <v-btn icon color="green lighten-2" v-on:click="refreshShop">
           <v-icon>refresh</v-icon>
         </v-btn>
-        <v-btn icon color="grey" v-on:click="toggleLocked">
+        <v-btn
+          icon
+          :color="locked ? 'green darken-4' : 'warning'"
+          v-on:click="toggleLocked"
+        >
           <v-icon>{{ locked ? 'lock_open' : 'lock' }}</v-icon>
         </v-btn>
       </v-flex>

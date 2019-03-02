@@ -12,7 +12,6 @@ const localState = {
     ? JSON.parse(gameInfo)
     : {
         locked: false,
-        chessBoard: Array.from({length: 64}, (v, i) => ''),
         gold: 0,
         round: 0,
         battlefield: [],

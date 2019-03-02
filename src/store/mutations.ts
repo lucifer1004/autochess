@@ -3,28 +3,15 @@ import * as MUTATION from '@/common/mutation-types'
 import {Chess, Position, State} from '@/common/types'
 
 const getRandomChess = (star: number): Chess => {
-  return CHESSES_ALL[Math.floor(Math.random() * CHESSES_ALL.length)]
+  return Object.assign(
+    {},
+    CHESSES_ALL[Math.floor(Math.random() * CHESSES_ALL.length)],
+  )
 }
 
 export default {
   [MUTATION.TOGGLE_LOCKED](state: State) {
     state.gameInfo.locked = !state.gameInfo.locked
-    sessionStorage.setItem(
-      'autochess-game-info',
-      JSON.stringify(state.gameInfo),
-    )
-  },
-  [MUTATION.ADD_HERO](state: State, payload: Position) {
-    state.gameInfo.chessBoard[(payload.row - 1) * 8 + payload.col - 1] =
-      'DragonKnight'
-    state.gameInfo.chessBoard = state.gameInfo.chessBoard.slice()
-    sessionStorage.setItem(
-      'autochess-game-info',
-      JSON.stringify(state.gameInfo),
-    )
-  },
-  [MUTATION.CHANGE_GOLD](state: State, payload: {change: number}) {
-    state.gameInfo.gold += payload.change
     sessionStorage.setItem(
       'autochess-game-info',
       JSON.stringify(state.gameInfo),
@@ -51,18 +38,60 @@ export default {
       JSON.stringify(state.gameInfo),
     )
   },
-  [MUTATION.MOVE_CHESS](state: State, payload: {from: Position; to: Position}) {
-    const from = (payload.from.row - 1) * 8 + payload.from.col - 1
-    const to = (payload.to.row - 1) * 8 + payload.to.col - 1
-    if (state.gameInfo.chessBoard[to] === '') {
-      state.gameInfo.chessBoard[to] = state.gameInfo.chessBoard[from]
-      state.gameInfo.chessBoard[from] = ''
-      state.gameInfo.chessBoard = state.gameInfo.chessBoard.slice()
-      sessionStorage.setItem(
-        'autochess-game-info',
-        JSON.stringify(state.gameInfo),
-      )
-    }
+  [MUTATION.MOVE_CHESS](
+    state: State,
+    payload: {from: Position; targetPosition: Position},
+  ) {
+    // Return if there is already a chess at the target position
+    if (
+      state.gameInfo.battlefield.filter(
+        chess =>
+          chess.position &&
+          chess.position.row === payload.targetPosition.row &&
+          chess.position.col === payload.targetPosition.col,
+      ).length > 0
+    )
+      return
+
+    const chess = state.gameInfo.battlefield.filter(
+      chess =>
+        chess.position &&
+        chess.position.row === payload.from.row &&
+        chess.position.col === payload.from.col,
+    )[0]
+    chess.position = payload.targetPosition
+    state.gameInfo.battlefield = state.gameInfo.battlefield.slice()
+    sessionStorage.setItem(
+      'autochess-game-info',
+      JSON.stringify(state.gameInfo),
+    )
+  },
+  [MUTATION.DISPATCH_CHESS](
+    state: State,
+    payload: {num: number; targetPosition: Position},
+  ) {
+    const chess = state.gameInfo.preparation[payload.num]
+    if (chess === null) return
+
+    // Return if there is already a chess at the target position
+    if (
+      state.gameInfo.battlefield.filter(
+        chess =>
+          chess.position &&
+          chess.position.row === payload.targetPosition.row &&
+          chess.position.col === payload.targetPosition.col,
+      ).length > 0
+    )
+      return
+
+    chess.position = payload.targetPosition
+    state.gameInfo.battlefield.push(chess)
+    state.gameInfo.preparation.splice(payload.num, 1)
+    state.gameInfo.preparation = state.gameInfo.preparation.slice()
+    sessionStorage.setItem(
+      'autochess-game-info',
+      JSON.stringify(state.gameInfo),
+    )
   },
   [MUTATION.BUY_CHESS](state: State, num: number) {
     const chess = state.gameInfo.shop[num]
@@ -81,7 +110,7 @@ export default {
   [MUTATION.SELL_CHESS](state: State, num: number) {
     const chess = state.gameInfo.preparation[num]
     if (chess === null) return
-    state.gameInfo.gold += chess.cost
+    state.gameInfo.gold = Math.min(state.gameInfo.gold + chess.cost, 100)
     state.gameInfo.preparation.splice(num, 1)
     state.gameInfo.preparation = state.gameInfo.preparation.slice()
     sessionStorage.setItem(
@@ -101,7 +130,6 @@ export default {
   [MUTATION.RESET](state: State) {
     state.gameInfo = {
       locked: false,
-      chessBoard: Array.from({length: 64}, (v, i) => ''),
       gold: 0,
       round: 0,
       battlefield: [],
