@@ -1,7 +1,8 @@
 <template>
   <v-card flat>
     <v-card-title>
-      <h3 class="headline mb-0">Preparation {{ preparation.length }} / 8</h3>
+      <h3 class="headline mb-0">Preparation</h3>
+      <h3>{{ preparation.length }} / 8</h3>
     </v-card-title>
     <v-layout wrap justify-center>
       <v-flex v-for="i in 8" :key="`preparation-slot-${i}`" xs12>
