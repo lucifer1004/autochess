@@ -41,7 +41,12 @@
           </v-btn>
         </v-flex>
         <v-flex xs4>
-          <v-btn color="green lighten-2" v-on:click="gainExp" icon>
+          <v-btn
+            color="green lighten-2"
+            v-on:click="gainExp"
+            :disabled="level >= 10 || gold < 5"
+            icon
+          >
             <v-icon>book</v-icon>
           </v-btn>
         </v-flex>

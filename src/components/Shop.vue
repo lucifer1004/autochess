@@ -14,14 +14,24 @@
               />
             </v-flex>
             <v-flex xs4>💰{{ shop[i - 1].cost }}</v-flex>
-            <v-btn icon color="green lighten-2" v-on:click="buyChess(i - 1)">
+            <v-btn
+              icon
+              color="green lighten-2"
+              :disabled="gold < shop[i - 1].cost"
+              v-on:click="buyChess(i - 1)"
+            >
               <v-icon>payment</v-icon>
             </v-btn>
           </v-layout>
         </v-card>
       </v-flex>
       <v-flex>
-        <v-btn icon color="green lighten-2" v-on:click="refreshShop">
+        <v-btn
+          icon
+          color="green lighten-2"
+          :disabled="gold < 2"
+          v-on:click="refreshShop"
+        >
           <v-icon>refresh</v-icon>
         </v-btn>
         <v-btn
@@ -48,6 +58,9 @@ export default Vue.extend({
     },
     shop(): Chess[] {
       return this.$store.state.gameInfo.shop
+    },
+    gold(): number {
+      return this.$store.state.gameInfo.gold
     },
   },
   methods: {

@@ -127,6 +127,9 @@ export default Vue.extend({
       return require(`@/assets/heroes/${this.chessInCell.name}.png`)
     },
     withdrawChess() {
+      // Return if no chess in current cell
+      if (!this.chessInCell) return
+
       this.$store.commit(WITHDRAW_CHESS, {row: this.row, col: this.col})
     },
   },
