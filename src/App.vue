@@ -26,11 +26,11 @@
       </v-layout>
       <router-view />
       <v-footer color="transparent">
-        <v-switch
-          v-model="lightMode"
-          color="green lighten-4"
-          label="Light Mode"
-        />
+        <v-switch v-model="lightMode" color="green lighten-4">
+          <template v-slot:label>
+            Light Mode
+          </template>
+        </v-switch>
         <h3 class="headline mb-0">2019 - Gabriel Wu</h3>
       </v-footer>
     </v-container>
@@ -48,3 +48,7 @@ export default Vue.extend({
   },
 })
 </script>
+<style lang="stylus">
+h1
+  padding 10px
+</style>
