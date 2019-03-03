@@ -1,5 +1,7 @@
 # AutoChess
 
+![AutoChess](src/assets/autochess.jpg)
+
 ## Implemented
 
 - Shop
