@@ -2,21 +2,27 @@
   <v-card
     :height="cellSize"
     :width="cellSize"
-    draggable
+    :draggable="!!chessInCell"
     v-on:dblclick="withdrawChess"
     v-on:dragstart="drag"
+    v-on:dragenter="dragenter"
+    v-on:dragleave="dragleave"
     v-on:dragover.prevent="dragover"
     v-on:drop="drop"
     :color="
       row <= 4
         ? 'grey'
         : (row + col) % 2 === 0
-        ? 'green lighten-4'
+        ? highlighted
+          ? 'green darken-1'
+          : 'green lighten-4'
+        : highlighted
+        ? 'green darken-3'
         : 'green lighten-2'
     "
     :img="chessInCell ? imageSource() : null"
   >
-    <v-layout justify-center v-if="chessInCell">
+    <v-layout draggable="false" justify-center v-if="!!chessInCell">
       <v-flex>
         {{ '⭐'.repeat(chessInCell.star) }}
       </v-flex>
@@ -35,6 +41,11 @@ import {Chess, State} from '@/common/types'
 
 export default Vue.extend({
   name: 'ChessCell',
+  data() {
+    return {
+      highlighted: false,
+    }
+  },
   props: {
     row: Number,
     col: Number,
@@ -79,6 +90,12 @@ export default Vue.extend({
       )
     },
     dragover() {},
+    dragenter() {
+      this.highlighted = true
+    },
+    dragleave() {
+      this.highlighted = false
+    },
     drop(event: any) {
       // Cannot move chess to row 1-4
       if (this.row <= 4) return
@@ -103,6 +120,8 @@ export default Vue.extend({
           },
         })
       }
+
+      this.highlighted = false
     },
     imageSource(): NodeRequire {
       return require(`@/assets/heroes/${this.chessInCell.name}.png`)
