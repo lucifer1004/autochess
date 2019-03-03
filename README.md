@@ -14,12 +14,13 @@
 - Battlefield
   - Move chess
   - Withdraw chess
-- Class Effects
-- Chess Upgrade
+- Class effects
+- Chess upgrade
 - Help
+- Basic touch support
 
 ## TODO
 
 - [ ] Chess Info
 - [ ] Items
-- [ ] Touch Support
+- [ ] Better touch Support

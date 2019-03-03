@@ -3,12 +3,14 @@
     :height="cellSize"
     :width="cellSize"
     :draggable="!!chessInCell"
-    v-on:dblclick="withdrawChess"
-    v-on:dragstart="drag"
-    v-on:dragenter="dragenter"
-    v-on:dragleave="dragleave"
-    v-on:dragover.prevent="dragover"
-    v-on:drop="drop"
+    @dblclick="withdrawChess"
+    @dragstart="drag"
+    @dragenter="dragenter"
+    @dragleave="dragleave"
+    @dragover.prevent="dragover"
+    @drop="drop"
+    @touchstart="touchstart"
+    @touchend="touchend"
     :color="
       row <= 4
         ? 'grey'
@@ -44,6 +46,8 @@ export default Vue.extend({
   data() {
     return {
       highlighted: false,
+      screenX: 0,
+      screenY: 0,
     }
   },
   props: {
@@ -57,7 +61,7 @@ export default Vue.extend({
     chessInCell(): Chess {
       return this.battlefield.filter(
         (chess: Chess) =>
-          chess.position &&
+          !!chess.position &&
           chess.position.row === this.row &&
           chess.position.col === this.col,
       )[0]
@@ -122,6 +126,45 @@ export default Vue.extend({
       }
 
       this.highlighted = false
+    },
+    touchstart(event: any): void {
+      if (!this.chessInCell) return
+      this.screenX = event.changedTouches[0].screenX
+      this.screenY = event.changedTouches[0].screenY
+    },
+    touchend(event: any): void {
+      if (!this.chessInCell) return
+      const deltaX = Math.round(
+        (event.changedTouches[0].screenX - this.screenX) / this.cellSize,
+      )
+      const deltaY = Math.round(
+        (event.changedTouches[0].screenY - this.screenY) / this.cellSize,
+      )
+      if (deltaX === 0 && deltaY === 0) return
+      const target = {
+        row: this.row + deltaY,
+        col: this.col + deltaX,
+      }
+
+      // Withdraw the chess if moved out of the valid area
+      if (
+        target.row <= 4 ||
+        target.row > 8 ||
+        target.col < 1 ||
+        target.col > 8
+      ) {
+        this.$store.commit(WITHDRAW_CHESS, {row: this.row, col: this.col})
+        return
+      }
+
+      // Otherwise move the chess
+      this.$store.commit(MOVE_CHESS, {
+        from: {
+          row: this.row,
+          col: this.col,
+        },
+        targetPosition: target,
+      })
     },
     imageSource(): NodeRequire {
       return require(`@/assets/heroes/${this.chessInCell.name}.png`)

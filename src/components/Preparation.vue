@@ -19,7 +19,7 @@
                 <v-img
                   :alt="preparation[i - 1].name"
                   draggable
-                  v-on:dragstart="drag($event, i - 1)"
+                  @dragstart="drag($event, i - 1)"
                   :src="
                     require(`@/assets/heroes/${preparation[i - 1].name}.png`)
                   "
@@ -28,7 +28,10 @@
             </v-flex>
             <v-flex xs5>{{ preparation[i - 1].name }}</v-flex>
             <v-flex xs2>{{ '⭐️'.repeat(preparation[i - 1].star) }}</v-flex>
-            <v-btn icon color="error" v-on:click="sellChess(i - 1)">
+            <v-btn icon color="green lighten-2" @click="dispatchChess(i - 1)">
+              <v-icon>send</v-icon>
+            </v-btn>
+            <v-btn icon color="error" @click="sellChess(i - 1)">
               <v-icon>delete</v-icon>
             </v-btn>
           </v-layout>
@@ -45,6 +48,9 @@ import {Chess} from '@/common/types'
 export default Vue.extend({
   name: 'Preparation',
   computed: {
+    battlefield(): Chess[] {
+      return this.$store.state.gameInfo.battlefield
+    },
     preparation(): Chess[] {
       return this.$store.state.gameInfo.preparation
     },
@@ -52,6 +58,38 @@ export default Vue.extend({
   methods: {
     drag(event: any, num: number) {
       event.dataTransfer.setData(DISPATCH_CHESS, JSON.stringify(num))
+    },
+    touchstart(event: any) {
+      console.log(event.timeStamp)
+    },
+    touchend(event: any) {
+      console.log(event.timeStamp)
+    },
+    dispatchChess(num: number) {
+      const availablePositions = new Set(
+        Array.from({length: 32}, (v, i) => i + 33),
+      )
+      this.battlefield.forEach(chess => {
+        if (!chess.position) return
+        availablePositions.delete(
+          (chess.position.row - 1) * 8 + chess.position.col,
+        )
+      })
+
+      // Return if all positions have been taken
+      if (availablePositions.size === 0) return
+
+      // Set the target
+      const target = Math.min(...availablePositions)
+
+      // Dispatch current chess to the target position
+      this.$store.commit(DISPATCH_CHESS, {
+        num: num,
+        targetPosition: {
+          row: Math.trunc(target / 8) + 1,
+          col: ((target - 1) % 8) + 1,
+        },
+      })
     },
     sellChess(num: number) {
       this.$store.commit(SELL_CHESS, num)

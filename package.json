@@ -50,7 +50,7 @@
     "convert-source-map": "1.6.0",
     "core-js": "2.6.5",
     "css-loader": "2.1.0",
-    "eslint": "5.14.1",
+    "eslint": "^5.15.0",
     "eslint-loader": "2.1.2",
     "eslint-plugin-cypress": "2.2.1",
     "eslint-plugin-prettier": "3.0.1",

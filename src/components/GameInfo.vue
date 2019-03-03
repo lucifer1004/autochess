@@ -69,7 +69,17 @@
           <ul>
             <li>Buy chesses from the shop.</li>
             <li>Sell chesses you do not want.</li>
-            <li>Drag chesses to the battlefield.</li>
+            <li>
+              Drag chesses to the battlefield (mouse only), or use the dispatch
+              button.
+            </li>
+            <li>
+              Move chesses for better positioning (touch support is poor).
+            </li>
+            <li>
+              Double-click on chesses to withdraw them (mouse only), or move the
+              chess out of the valid area (on touch screen).
+            </li>
             <li>Collect similar chesses to upgrade.</li>
             <li>
               Collect chesses of the same class to enable powerful effects.
@@ -79,7 +89,9 @@
           </ul>
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="showHelp = false">Close</v-btn>
+          <v-layout justify-center>
+            <v-btn @click="showHelp = false">Close</v-btn>
+          </v-layout>
         </v-card-actions>
       </v-card>
     </v-dialog>
