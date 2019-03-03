@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card style="margin-top: 20px">
     <v-layout wrap>
       <v-flex xs12 lg4 xl2>
         <GameInfo />

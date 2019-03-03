@@ -1,5 +1,5 @@
 <template>
-  <v-card flat>
+  <v-card flat color="transparent">
     <v-card-title>
       <v-layout column align-start>
         <h3 class="headline mb-0">Preparation</h3>

@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>Welcome to AutoChess</h1>
+  <v-card style="margin-top: 20px; padding-bottom: 20px;">
+    <h1>Welcome to Auto🤖Chess!</h1>
     <v-layout justify-center>
       <v-img
         alt="AutoChess logo"
@@ -8,7 +8,10 @@
         max-width="800"
       />
     </v-layout>
-  </div>
+    <v-card-text
+      ><h3>A plain version of the 🔥 game DotA AutoChess</h3></v-card-text
+    >
+  </v-card>
 </template>
 
 <script lang="ts">

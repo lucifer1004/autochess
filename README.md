@@ -22,3 +22,4 @@
 
 - [ ] Chess Info
 - [ ] Items
+- [ ] Touch Support

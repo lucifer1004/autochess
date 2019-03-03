@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>Play the game!</h1>
     <v-layout wrap justify-center>
       <v-flex xs12>
         <ChessBoard />

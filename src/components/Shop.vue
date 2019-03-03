@@ -1,5 +1,5 @@
 <template>
-  <v-card flat>
+  <v-card flat color="transparent">
     <v-card-title>
       <h3 class="headline mb-0">Shop</h3>
     </v-card-title>
