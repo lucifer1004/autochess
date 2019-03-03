@@ -22,7 +22,7 @@
     "
     :img="chessInCell ? imageSource() : null"
   >
-    <v-layout draggable="false" justify-center v-if="!!chessInCell">
+    <v-layout justify-center v-if="!!chessInCell">
       <v-flex>
         {{ '⭐'.repeat(chessInCell.star) }}
       </v-flex>

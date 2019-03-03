@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app :dark="!lightMode">
     <v-container grid-list-sm text-xs-center>
       <v-layout justify-center>
         <v-flex xs3 md2 lg1>
@@ -26,9 +26,25 @@
       </v-layout>
       <router-view />
       <v-footer color="transparent">
-        <v-spacer />
+        <v-switch
+          v-model="lightMode"
+          color="green lighten-4"
+          label="Light Mode"
+        />
         <h3 class="headline mb-0">2019 - Gabriel Wu</h3>
       </v-footer>
     </v-container>
   </v-app>
 </template>
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  name: 'App',
+  data() {
+    return {
+      lightMode: false,
+    }
+  },
+})
+</script>

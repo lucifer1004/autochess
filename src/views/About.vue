@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>About this site</h1>
-    <v-card color="green darken-4">
+    <v-card>
       <v-layout justify-center align-center>
         <v-flex xs6 sm3>
           <v-img

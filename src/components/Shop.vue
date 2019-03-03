@@ -7,13 +7,16 @@
       <v-flex v-for="i in 5" :key="`shop-slot-${i}`" xs12>
         <v-card flat color="transparent">
           <v-layout v-if="shop[i - 1]" justify-center align-center>
-            <v-flex xs4>
-              <v-img
-                :alt="shop[i - 1].name"
-                :src="require(`@/assets/heroes/${shop[i - 1].name}.png`)"
-              />
+            <v-flex xs3>
+              <v-avatar tile>
+                <v-img
+                  :alt="shop[i - 1].name"
+                  :src="require(`@/assets/heroes/${shop[i - 1].name}.png`)"
+                />
+              </v-avatar>
             </v-flex>
-            <v-flex xs4>💰{{ shop[i - 1].cost }}</v-flex>
+            <v-flex xs5>{{ shop[i - 1].name }}</v-flex>
+            <v-flex xs2>💰{{ shop[i - 1].cost }}</v-flex>
             <v-btn
               icon
               color="green lighten-2"

@@ -1,5 +1,5 @@
 <template>
-  <v-card color="green darken-4" style="padding-bottom: 20px">
+  <v-card flat style="padding-bottom: 20px">
     <v-card-title>
       <h3 class="headline mb-0">Battlefield</h3>
     </v-card-title>

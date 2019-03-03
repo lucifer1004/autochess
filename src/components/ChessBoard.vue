@@ -1,16 +1,16 @@
 <template>
   <v-card>
     <v-layout wrap>
-      <v-flex xs12 md2>
+      <v-flex xs12 lg4 xl2>
         <GameInfo />
       </v-flex>
-      <v-flex xs12 md6>
+      <v-flex xs12 lg8 xl6>
         <Battlefield />
       </v-flex>
-      <v-flex xs12 md2>
+      <v-flex xs12 lg6 xl2>
         <Preparation />
       </v-flex>
-      <v-flex xs12 md2>
+      <v-flex xs12 lg6 xl2>
         <Shop />
       </v-flex>
     </v-layout>

@@ -1,8 +1,10 @@
 <template>
   <v-card flat>
     <v-card-title>
-      <h3 class="headline mb-0">Preparation</h3>
-      <h3>{{ preparation.length }} / 8</h3>
+      <v-layout column align-start>
+        <h3 class="headline mb-0">Preparation</h3>
+        <h3>{{ preparation.length }} / 8</h3>
+      </v-layout>
     </v-card-title>
     <v-layout wrap justify-center>
       <v-flex v-for="i in 8" :key="`preparation-slot-${i}`" xs12>
@@ -12,15 +14,20 @@
           color="transparent"
         >
           <v-layout justify-center align-center>
-            <v-flex xs4>
-              <v-img
-                :alt="preparation[i - 1].name"
-                draggable
-                v-on:dragstart="drag($event, i - 1)"
-                :src="require(`@/assets/heroes/${preparation[i - 1].name}.png`)"
-              />
+            <v-flex xs3>
+              <v-avatar tile>
+                <v-img
+                  :alt="preparation[i - 1].name"
+                  draggable
+                  v-on:dragstart="drag($event, i - 1)"
+                  :src="
+                    require(`@/assets/heroes/${preparation[i - 1].name}.png`)
+                  "
+                />
+              </v-avatar>
             </v-flex>
-            <v-flex xs4>{{ '⭐️'.repeat(preparation[i - 1].star) }}</v-flex>
+            <v-flex xs5>{{ preparation[i - 1].name }}</v-flex>
+            <v-flex xs2>{{ '⭐️'.repeat(preparation[i - 1].star) }}</v-flex>
             <v-btn icon color="error" v-on:click="sellChess(i - 1)">
               <v-icon>delete</v-icon>
             </v-btn>
