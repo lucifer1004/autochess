@@ -14,9 +14,9 @@
   - Withdraw chess
 - Class Effects
 - Chess Upgrade
+- Help
 
 ## TODO
 
-- [ ] Help
 - [ ] Chess Info
 - [ ] Items
