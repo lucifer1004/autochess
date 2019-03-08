@@ -528,6 +528,7 @@ export default {
       if (state.gameInfo.exp >= LEVELUP_REQUIREMENT[state.gameInfo.level]) {
         state.gameInfo.exp -= LEVELUP_REQUIREMENT[state.gameInfo.level]
         state.gameInfo.level += 1
+        if (state.gameInfo.level === 10) state.gameInfo.exp = 0
       }
     }
 
@@ -679,6 +680,7 @@ export default {
       round: 0,
       level: 0,
       exp: 0,
+      hp: 100,
       effects: {},
       battlefield: [],
       preparation: [],

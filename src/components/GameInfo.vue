@@ -3,7 +3,7 @@
     <v-card-title>
       <h3 class="headline mb-0">Game Info</h3>
     </v-card-title>
-    <v-layout justify-center>
+    <v-layout justify-center wrap>
       <v-flex xs4>
         <v-icon large>timer</v-icon>
         <h4>{{ round }}</h4>
@@ -17,6 +17,26 @@
         <h4 :style="onBattlefield > level ? 'color: red' : ''">
           {{ `${onBattlefield}/${level}` }}
         </h4>
+      </v-flex>
+      <v-flex xs3>
+        <v-progress-circular
+          :value="hp"
+          color="red lighten-2"
+          size="60"
+          width="10"
+          >{{ hp }}</v-progress-circular
+        >
+      </v-flex>
+      <v-flex xs3>
+        <v-progress-circular
+          :value="level < 10 ? (exp / levelUpRequirement[level]) * 100 : 100"
+          color="blue darken-2"
+          size="60"
+          width="10"
+          >{{
+            level !== 10 ? `${exp}/${levelUpRequirement[level]}` : 'Max'
+          }}</v-progress-circular
+        >
       </v-flex>
     </v-layout>
     <v-card-text>
@@ -100,6 +120,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import {LEVELUP_REQUIREMENT} from '@/common/constants'
 import {INCREASE_ROUND, RESET, GAIN_EXP} from '@/common/mutation-types'
 import {Effect} from '@/common/types'
 
@@ -108,6 +129,7 @@ export default Vue.extend({
   data() {
     return {
       showHelp: false,
+      levelUpRequirement: LEVELUP_REQUIREMENT,
     }
   },
   computed: {
@@ -125,6 +147,12 @@ export default Vue.extend({
     },
     onBattlefield(): number {
       return this.$store.state.gameInfo.battlefield.length
+    },
+    exp(): number {
+      return this.$store.state.gameInfo.exp
+    },
+    hp(): number {
+      return this.$store.state.gameInfo.hp
     },
   },
   methods: {

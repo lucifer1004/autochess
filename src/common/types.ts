@@ -126,6 +126,7 @@ export interface GameInfo {
   gold: number
   level: number
   exp: number
+  hp: number
   round: number
   effects: Effect
   battlefield: Chess[]
