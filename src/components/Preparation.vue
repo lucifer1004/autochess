@@ -76,6 +76,8 @@ export default Vue.extend({
         )
       })
 
+      console.log(availablePositions)
+
       // Return if all positions have been taken
       if (availablePositions.size === 0) return
 
@@ -86,7 +88,7 @@ export default Vue.extend({
       this.$store.commit(DISPATCH_CHESS, {
         num: num,
         targetPosition: {
-          row: Math.trunc(target / 8) + 1,
+          row: Math.trunc((target - 1) / 8) + 1,
           col: ((target - 1) % 8) + 1,
         },
       })
