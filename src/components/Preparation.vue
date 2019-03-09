@@ -76,8 +76,6 @@ export default Vue.extend({
         )
       })
 
-      console.log(availablePositions)
-
       // Return if all positions have been taken
       if (availablePositions.size === 0) return
 
