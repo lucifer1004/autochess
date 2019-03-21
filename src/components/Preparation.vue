@@ -59,12 +59,6 @@ export default Vue.extend({
     drag(event: any, num: number) {
       event.dataTransfer.setData(DISPATCH_CHESS, JSON.stringify(num))
     },
-    touchstart(event: any) {
-      console.log(event.timeStamp)
-    },
-    touchend(event: any) {
-      console.log(event.timeStamp)
-    },
     dispatchChess(num: number) {
       const availablePositions = new Set(
         Array.from({length: 32}, (v, i) => i + 33),
