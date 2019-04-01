@@ -2,6 +2,10 @@
 
 ![AutoChess](src/assets/autochess.jpg)
 
+## Updates:
+
+- [4.1]: 🔥Mars and ⚡️Zeus have come!
+
 ## Implemented
 
 - Shop
