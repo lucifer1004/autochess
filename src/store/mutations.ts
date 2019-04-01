@@ -321,6 +321,36 @@ const checkEffects = (state: State): void => {
       }
     }
   }
+
+  // God
+  if (classStat.God !== undefined) {
+    state.gameInfo.effects.isGod = false
+    state.gameInfo.effects.is2Gods = false
+
+    // For code simplicity
+    const e = state.gameInfo.effects
+    if (
+      e.isDemon ||
+      e.isDwarf ||
+      e.isOgre ||
+      e.is2Beasts ||
+      e.is2Elementals ||
+      e.is2Humans ||
+      e.is2Nagas ||
+      e.is2Trolls ||
+      e.is3Dragons ||
+      e.is3Elfs ||
+      e.is3Goblins
+    )
+      return
+
+    if (classStat.God >= 1) {
+      state.gameInfo.effects.isGod = true
+      if (classStat.God >= 2) {
+        state.gameInfo.effects.is2Gods = true
+      }
+    }
+  }
 }
 
 const mergeChess = (state: State): void => {

@@ -23,6 +23,7 @@ export const CHESS_CLASSES: string[] = [
   'Elemental',
   'Elf',
   'Goblin',
+  'God',
   'Human',
   'Naga',
   'Ogre',
