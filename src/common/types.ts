@@ -3,20 +3,8 @@ export interface Position {
   col: number
 }
 
-export interface Chess {
+export interface ChessProperty {
   name: string
-  cost: number
-  star: number
-  health?: number
-  mana?: number
-  healthRemaining?: number
-  manaRemaining?: number
-  attack?: number
-  attackSpeed?: number
-  defence?: number
-  resistance?: number
-  dodge?: number
-  position?: Position
   Beast?: boolean
   Demon?: boolean
   Dragon?: boolean
@@ -24,6 +12,7 @@ export interface Chess {
   Elemental?: boolean
   Elf?: boolean
   Goblin?: boolean
+  God?: boolean
   Human?: boolean
   Naga?: boolean
   Ogre?: boolean
@@ -43,6 +32,21 @@ export interface Chess {
   Warrior?: boolean
 }
 
+export interface Chess extends ChessProperty {
+  cost: number
+  star: number
+  health?: number
+  mana?: number
+  healthRemaining?: number
+  manaRemaining?: number
+  attack?: number
+  attackSpeed?: number
+  defence?: number
+  resistance?: number
+  dodge?: number
+  position?: Position
+}
+
 export interface ClassStat {
   Beast?: number
   Demon?: number
@@ -51,6 +55,7 @@ export interface ClassStat {
   Elemental?: number
   Elf?: number
   Goblin?: number
+  God?: number
   Human?: number
   Naga?: number
   Ogre?: number
@@ -84,6 +89,8 @@ export interface Effect {
   is9Elfs?: boolean
   is3Goblins?: boolean
   is6Goblins?: boolean
+  isGod?: boolean
+  is2Gods?: boolean
   is2Humans?: boolean
   is4Humans?: boolean
   is6Humans?: boolean

@@ -24,3 +24,4 @@
 - [ ] Chess Info
 - [ ] Items
 - [ ] Better touch Support
+- [ ] Battle
