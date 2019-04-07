@@ -2,7 +2,7 @@
   <div class="home">
     <v-layout wrap justify-center>
       <v-flex xs12>
-        <ChessBoard />
+        <chess-board />
       </v-flex>
     </v-layout>
   </div>

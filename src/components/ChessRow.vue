@@ -1,6 +1,6 @@
 <template>
   <v-layout align-center justify-center>
-    <ChessCell v-for="col in cols" :key="col" :col="col" :row="row" />
+    <chess-cell v-for="col in cols" :key="col" :col="col" :row="row" />
   </v-layout>
 </template>
 

@@ -3,7 +3,7 @@
     <v-card-title>
       <h3 class="headline mb-0">Battlefield</h3>
     </v-card-title>
-    <ChessRow v-for="row in rows" :key="row" :row="row" :cols="cols" />
+    <chess-row v-for="row in rows" :key="row" :row="row" :cols="cols" />
   </v-card>
 </template>
 

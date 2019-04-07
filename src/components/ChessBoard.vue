@@ -2,16 +2,16 @@
   <v-card style="margin-top: 20px">
     <v-layout wrap>
       <v-flex xs12 lg4 xl2>
-        <GameInfo />
+        <game-info />
       </v-flex>
       <v-flex xs12 lg8 xl6>
-        <Battlefield />
+        <battlefield />
       </v-flex>
       <v-flex xs12 lg6 xl2>
-        <Preparation />
+        <preparation />
       </v-flex>
       <v-flex xs12 lg6 xl2>
-        <Shop />
+        <shop />
       </v-flex>
     </v-layout>
   </v-card>
