@@ -2,8 +2,9 @@
 
 ![AutoChess](src/assets/autochess.jpg)
 
-## Updates:
+## Updates
 
+- [6.2]: Dazzle, WinterWyvern and Sven have come!
 - [4.1]: 🔥Mars and ⚡️Zeus have come!
 
 ## Implemented

@@ -27,6 +27,7 @@ export interface ChessProperty {
   Knight?: boolean
   Mage?: boolean
   Mech?: boolean
+  Priest?: boolean
   Shaman?: boolean
   Warlock?: boolean
   Warrior?: boolean
@@ -70,6 +71,7 @@ export interface ClassStat {
   Knight?: number
   Mage?: number
   Mech?: number
+  Priest?: number
   Shaman?: number
   Warlock?: number
   Warrior?: number
@@ -111,8 +113,7 @@ export interface Effect {
   is2DemonHunters?: boolean
   is2Druids?: boolean
   is4Druids?: boolean
-  is2Knights?: boolean
-  is4Knights?: boolean
+  is3Knights?: boolean
   is6Knights?: boolean
   is3Hunters?: boolean
   is6Hunters?: boolean
@@ -120,6 +121,7 @@ export interface Effect {
   is6Mages?: boolean
   is2Mechs?: boolean
   is4Mechs?: boolean
+  isPriest?: boolean
   is2Shamans?: boolean
   is3Warlocks?: boolean
   is6Warlocks?: boolean

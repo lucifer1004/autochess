@@ -46,11 +46,11 @@ const CHESSES_1C = [
     Beast: true,
     Druid: true,
   },
-  {
-    name: 'OgreMagi',
-    Ogre: true,
-    Mage: true,
-  },
+  // {
+  //   name: 'OgreMagi',
+  //   Ogre: true,
+  //   Mage: true,
+  // },
   {
     name: 'ShadowShaman',
     Troll: true,
@@ -65,6 +65,11 @@ const CHESSES_1C = [
     name: 'Mars',
     God: true,
     Soldier: true,
+  },
+  {
+    name: 'WinterWyvern',
+    Dragon: true,
+    Mage: true,
   },
 ]
 
@@ -119,6 +124,11 @@ const CHESSES_2C = [
     name: 'Mirana',
     Elf: true,
     Hunter: true,
+  },
+  {
+    name: 'Lich',
+    Undead: true,
+    Mage: true,
   },
   // {
   //   name: 'Slark',
@@ -175,6 +185,11 @@ const CHESSES_3C = [
   //   Assassin: true,
   // },
   {
+    name: 'Dazzle',
+    Troll: true,
+    Priest: true,
+  },
+  {
     name: 'Sniper',
     Dwarf: true,
     Hunter: true,
@@ -225,6 +240,7 @@ const CHESSES_4C = [
   {
     name: 'Alchemist',
     Goblin: true,
+    Ogre: true,
     Warlock: true,
   },
   {
@@ -282,11 +298,6 @@ const CHESSES_4C = [
 
 const CHESSES_5C = [
   {
-    name: 'Lich',
-    Undead: true,
-    Mage: true,
-  },
-  {
     name: 'TideHunter',
     Naga: true,
     Hunter: true,
@@ -310,6 +321,11 @@ const CHESSES_5C = [
     name: 'Techies',
     Goblin: true,
     Mech: true,
+  },
+  {
+    name: 'Sven',
+    Demon: true,
+    Soldier: true,
   },
 ]
 

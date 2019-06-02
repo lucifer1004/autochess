@@ -250,16 +250,12 @@ const checkEffects = (state: State): void => {
 
   // Knight
   if (classStat.Knight !== undefined) {
-    state.gameInfo.effects.is2Knights = false
-    state.gameInfo.effects.is4Knights = false
+    state.gameInfo.effects.is3Knights = false
     state.gameInfo.effects.is6Knights = false
-    if (classStat.Knight >= 2) {
-      state.gameInfo.effects.is2Knights = true
-      if (classStat.Knight >= 4) {
-        state.gameInfo.effects.is4Knights = true
-        if (classStat.Knight >= 6) {
-          state.gameInfo.effects.is6Knights = true
-        }
+    if (classStat.Knight >= 3) {
+      state.gameInfo.effects.is3Knights = true
+      if (classStat.Knight >= 6) {
+        state.gameInfo.effects.is6Knights = true
       }
     }
   }
@@ -322,6 +318,12 @@ const checkEffects = (state: State): void => {
     }
   }
 
+  // Priest
+  if (classStat.Priest !== undefined) {
+    state.gameInfo.effects.isPriest = false
+    if (classStat.Priest >= 1) state.gameInfo.effects.isPriest = true
+  }
+
   // God
   if (classStat.God !== undefined) {
     state.gameInfo.effects.isGod = false
@@ -351,6 +353,8 @@ const checkEffects = (state: State): void => {
       }
     }
   }
+
+  console.log(classStat)
 }
 
 const mergeChess = (state: State): void => {

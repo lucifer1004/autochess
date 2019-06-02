@@ -38,6 +38,7 @@ export const CHESS_CLASSES: string[] = [
   'Knight',
   'Mage',
   'Mech',
+  'Priest',
   'Shaman',
   'Warlock',
   'Warrior',

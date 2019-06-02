@@ -27,7 +27,10 @@ export default Vue.extend({
   name: 'home',
   data() {
     return {
-      updates: [`[4.1]: 🔥Mars and ⚡️Zeus have come!`],
+      updates: [
+        `[4.1]: 🔥Mars and ⚡️Zeus have come!`,
+        `[6.2]: Dazzle, WinterWyvern and Sven have come!`,
+      ],
     }
   },
 })
