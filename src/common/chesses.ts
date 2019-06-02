@@ -64,7 +64,7 @@ const CHESSES_1C = [
   {
     name: 'Mars',
     God: true,
-    Soldier: true,
+    Warrior: true,
   },
   {
     name: 'WinterWyvern',
@@ -325,7 +325,7 @@ const CHESSES_5C = [
   {
     name: 'Sven',
     Demon: true,
-    Soldier: true,
+    Warrior: true,
   },
 ]
 
