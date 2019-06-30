@@ -27,17 +27,17 @@ devDependencies:
   babel-eslint: 10.0.2
   babel-jest: 24.8.0
   babel-loader: 8.0.6
-  cache-loader: 4.0.0
+  cache-loader: 4.0.1
   convert-source-map: 1.6.0
   core-js: 3.1.4
   css-loader: 3.0.0
-  eslint: 6.0.0
+  eslint: 6.0.1
   eslint-loader: 2.1.2
   eslint-plugin-cypress: 2.2.1
   eslint-plugin-prettier: 3.1.0
   eslint-plugin-vue: 5.2.3
   file-loader: 4.0.0
-  husky: 2.5.0
+  husky: 2.7.0
   jest: 24.8.0
   jest-environment-jsdom: 24.8.0
   jest-serializer-vue: 2.0.2
@@ -52,7 +52,7 @@ devDependencies:
   ts-loader: 6.0.4
   tslib: 1.10.0
   typescript: 3.5.2
-  url-loader: 2.0.0
+  url-loader: 2.0.1
   vue-jest: 3.0.4
   vue-loader: 15.7.0
   vue-style-loader: 4.1.2
@@ -2923,7 +2923,7 @@ packages:
       webpack: ^4.0.0
     resolution:
       integrity: sha512-V99T3FOynmGx26Zom+JrVBytLBsmUCzVG2/4NnUKgvXN4bEV42R1ERl1IyiH/cvFIDA1Ytq2lPZ9tXDSahcQpQ==
-  /cache-loader/4.0.0:
+  /cache-loader/4.0.1:
     dependencies:
       buffer-json: 2.0.0
       find-cache-dir: 3.0.0
@@ -2937,7 +2937,7 @@ packages:
     peerDependencies:
       webpack: ^4.0.0
     resolution:
-      integrity: sha512-QTLCBoDju/InytQyQNHsn0q0xDlInCtId09CW8BLhFZY72GcqDHGbJdSiulsv1YBwB4zvy2QhioPADoSAl7qjg==
+      integrity: sha512-r5uLI/Igk1qomgoaCvX3LiiDJfKJ03oeAOV7RTrLdkzwxmwjw/JZUr9LYPRsM6CV99SGnR55Tve534aSZsH0mw==
   /cachedir/1.3.0:
     dependencies:
       os-homedir: 1.0.2
@@ -4674,7 +4674,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-bT3/1x1EbZB7phzYu7vCr1v3ONuzDtX8WjuM9c0iYxe+cq+pwcKEoQjl7zd3RpC6YOLgnSy3cTN58M2jcoPDIQ==
-  /eslint/6.0.0:
+  /eslint/6.0.1:
     dependencies:
       '@babel/code-frame': 7.0.0
       ajv: 6.10.0
@@ -4717,7 +4717,7 @@ packages:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
     hasBin: true
     resolution:
-      integrity: sha512-SrrIfcd4tOgsspOKTSwamuTOAMZOUigHQhVMrzNjz4/B9Za6SHQDIocMIyIDfwDgx6MhS15nS6HC8kumCV2qBQ==
+      integrity: sha512-DyQRaMmORQ+JsWShYsSg4OPTjY56u1nCjAmICrE8vLWqyLKxhFXOthwMj1SA8xwfrv0CofLNVnqbfyhwCkaO0w==
   /espree/3.5.4:
     dependencies:
       acorn: 5.7.3
@@ -5410,7 +5410,7 @@ packages:
       integrity: sha512-VwyB3Lkgacfik2vhqR4uv2rvebqmDvFu4jlN/C1RzWoJEo8I7z4Q404oiqYCkq41mni8EzQnm95emU9seckwtg==
   /flat-cache/2.0.1:
     dependencies:
-      flatted: 2.0.0
+      flatted: 2.0.1
       rimraf: 2.6.3
       write: 1.0.3
     dev: true
@@ -5418,10 +5418,10 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-LoQe6yDuUMDzQAEH8sgmh4Md6oZnc/7PjtwjNFSzveXqSHt6ka9fPBuso7IGf9Rz4uqnSnWiFH2B/zj24a5ReA==
-  /flatted/2.0.0:
+  /flatted/2.0.1:
     dev: true
     resolution:
-      integrity: sha512-R+H8IZclI8AAkSBRQJLVOsxwAoHd6WC40b4QTNWIjzAa6BXOBfQcM587MXDTVPeYaopFNWHUFLx7eNmHDSxMWg==
+      integrity: sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
   /flush-write-stream/1.1.1:
     dependencies:
       inherits: 2.0.4
@@ -6184,10 +6184,11 @@ packages:
     dev: true
     resolution:
       integrity: sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
-  /husky/2.5.0:
+  /husky/2.7.0:
     dependencies:
       cosmiconfig: 5.2.1
       execa: 1.0.0
+      find-up: 3.0.0
       get-stdin: 7.0.0
       is-ci: 2.0.0
       pkg-dir: 4.2.0
@@ -6201,7 +6202,7 @@ packages:
     hasBin: true
     requiresBuild: true
     resolution:
-      integrity: sha512-/aQIBaVMuzGi5X5BPliDPbHE+G+HDpWV7Zu28DiiXFMvHQcOeTsEnODWIGKyGBp7GM7rOgkxQdF+6AEo6xNtkw==
+      integrity: sha512-LIi8zzT6PyFpcYKdvWRCn/8X+6SuG2TgYYMrM6ckEYhlp44UcEduVymZGIZNLiwOUjrEud+78w/AsAiqJA/kRg==
   /iconv-lite/0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -12437,7 +12438,7 @@ packages:
       webpack: ^3.0.0 || ^4.0.0
     resolution:
       integrity: sha512-dXHkKmw8FhPqu8asTc1puBfe3TehOCo2+RmOOev5suNCIYBcT626kxiWg1NBVkwc4rO8BGa7gP70W7VXuqHrjg==
-  /url-loader/2.0.0:
+  /url-loader/2.0.1:
     dependencies:
       loader-utils: 1.2.3
       mime: 2.4.4
@@ -12448,7 +12449,7 @@ packages:
     peerDependencies:
       webpack: ^4.0.0
     resolution:
-      integrity: sha512-RT3cz+Lw+kFMCKLabMyogFrc/aRoAMJHmY5os1VDBlav+4t5vxUxKDn47zCSFAYAl+hM8YLg4TZwG4TkJaafkg==
+      integrity: sha512-nd+jtHG6VgYx/NnXxXSWCJ7FtHIhuyk6Pe48HKhq29Avq3r5FSdIrenvzlbb67A3SNFaQyLk0/lMZfubj0+5ww==
   /url-parse-lax/1.0.0:
     dependencies:
       prepend-http: 1.0.4
@@ -13353,17 +13354,17 @@ specifiers:
   babel-eslint: 10.0.2
   babel-jest: 24.8.0
   babel-loader: 8.0.6
-  cache-loader: 4.0.0
+  cache-loader: 4.0.1
   convert-source-map: 1.6.0
   core-js: 3.1.4
   css-loader: 3.0.0
-  eslint: 6.0.0
+  eslint: 6.0.1
   eslint-loader: 2.1.2
   eslint-plugin-cypress: 2.2.1
   eslint-plugin-prettier: 3.1.0
   eslint-plugin-vue: 5.2.3
   file-loader: 4.0.0
-  husky: 2.5.0
+  husky: 2.7.0
   jest: 24.8.0
   jest-environment-jsdom: 24.8.0
   jest-serializer-vue: 2.0.2
@@ -13379,7 +13380,7 @@ specifiers:
   ts-loader: 6.0.4
   tslib: 1.10.0
   typescript: 3.5.2
-  url-loader: 2.0.0
+  url-loader: 2.0.1
   vue: 2.6.10
   vue-jest: 3.0.4
   vue-loader: 15.7.0
