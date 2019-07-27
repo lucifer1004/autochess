@@ -1,5 +1,5 @@
 <template>
-  <v-app :dark="!lightMode">
+  <v-app>
     <a href="https://github.com/lucifer1004/autochess">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -110,6 +110,11 @@ export default Vue.extend({
   computed: {
     buttonColor(): string {
       return this.lightMode ? 'green lighten-4' : 'green darken-4'
+    },
+  },
+  watch: {
+    lightMode() {
+      this.$vuetify.theme.dark = !this.lightMode
     },
   },
 })

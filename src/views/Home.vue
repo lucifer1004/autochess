@@ -11,9 +11,9 @@
     <v-card-text>
       <h2>A plain version of the 🔥 game DotA AutoChess</h2>
       <v-list>
-        <v-list-tile v-for="update in updates" :key="update">
-          <v-list-tile-content v-text="update" />
-        </v-list-tile>
+        <v-list-item v-for="update in updates" :key="update">
+          <v-list-item-content v-text="update" />
+        </v-list-item>
       </v-list>
     </v-card-text>
   </v-card>
