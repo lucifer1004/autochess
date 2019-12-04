@@ -353,8 +353,6 @@ const checkEffects = (state: State): void => {
       }
     }
   }
-
-  console.log(classStat)
 }
 
 const mergeChess = (state: State): void => {
