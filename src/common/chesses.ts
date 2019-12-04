@@ -329,25 +329,25 @@ const CHESSES_5C = [
   },
 ]
 
-const CHESSES_1C1S: Chess[] = JSON.parse(JSON.stringify(CHESSES_1C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 1, star: 1}),
-)
+const CHESSES_1C1S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_1C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 1, star: 1}))
 
-const CHESSES_2C1S: Chess[] = JSON.parse(JSON.stringify(CHESSES_2C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 2, star: 1}),
-)
+const CHESSES_2C1S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_2C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 2, star: 1}))
 
-const CHESSES_3C1S: Chess[] = JSON.parse(JSON.stringify(CHESSES_3C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 3, star: 1}),
-)
+const CHESSES_3C1S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_3C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 3, star: 1}))
 
-const CHESSES_4C1S: Chess[] = JSON.parse(JSON.stringify(CHESSES_4C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 4, star: 1}),
-)
+const CHESSES_4C1S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_4C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 4, star: 1}))
 
-const CHESSES_5C1S: Chess[] = JSON.parse(JSON.stringify(CHESSES_5C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 5, star: 1}),
-)
+const CHESSES_5C1S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_5C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 5, star: 1}))
 
 const CHESSES_1S = [
   CHESSES_1C1S,
@@ -357,25 +357,25 @@ const CHESSES_1S = [
   CHESSES_5C1S,
 ]
 
-const CHESSES_1C2S: Chess[] = JSON.parse(JSON.stringify(CHESSES_1C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 3, star: 2}),
-)
+const CHESSES_1C2S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_1C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 3, star: 2}))
 
-const CHESSES_2C2S: Chess[] = JSON.parse(JSON.stringify(CHESSES_2C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 4, star: 2}),
-)
+const CHESSES_2C2S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_2C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 4, star: 2}))
 
-const CHESSES_3C2S: Chess[] = JSON.parse(JSON.stringify(CHESSES_3C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 5, star: 2}),
-)
+const CHESSES_3C2S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_3C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 5, star: 2}))
 
-const CHESSES_4C2S: Chess[] = JSON.parse(JSON.stringify(CHESSES_4C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 6, star: 2}),
-)
+const CHESSES_4C2S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_4C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 6, star: 2}))
 
-const CHESSES_5C2S: Chess[] = JSON.parse(JSON.stringify(CHESSES_5C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 7, star: 2}),
-)
+const CHESSES_5C2S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_5C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 7, star: 2}))
 
 const CHESSES_2S = [
   CHESSES_1C2S,
@@ -385,37 +385,41 @@ const CHESSES_2S = [
   CHESSES_5C2S,
 ]
 
-const CHESSES_1C3S: Chess[] = JSON.parse(JSON.stringify(CHESSES_1C)).map(
-  (obj: ChessProperty) =>
-    obj.name === 'Enchantress'
-      ? Object.assign(obj, {cost: 4, star: 3})
-      : Object.assign(obj, {cost: 5, star: 3}),
+const CHESSES_1C3S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_1C),
+).map((obj: ChessProperty) =>
+  obj.name === 'Enchantress'
+    ? Object.assign(obj, {cost: 4, star: 3})
+    : Object.assign(obj, {cost: 5, star: 3}),
 )
 
-const CHESSES_2C3S: Chess[] = JSON.parse(JSON.stringify(CHESSES_2C)).map(
-  (obj: ChessProperty) =>
-    obj.name === 'NaturesProphet'
-      ? Object.assign(obj, {cost: 5, star: 3})
-      : Object.assign(obj, {cost: 6, star: 3}),
+const CHESSES_2C3S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_2C),
+).map((obj: ChessProperty) =>
+  obj.name === 'NaturesProphet'
+    ? Object.assign(obj, {cost: 5, star: 3})
+    : Object.assign(obj, {cost: 6, star: 3}),
 )
 
-const CHESSES_3C3S: Chess[] = JSON.parse(JSON.stringify(CHESSES_3C)).map(
-  (obj: ChessProperty) =>
-    obj.name === 'TreantProtector'
-      ? Object.assign(obj, {cost: 6, star: 3})
-      : Object.assign(obj, {cost: 7, star: 3}),
+const CHESSES_3C3S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_3C),
+).map((obj: ChessProperty) =>
+  obj.name === 'TreantProtector'
+    ? Object.assign(obj, {cost: 6, star: 3})
+    : Object.assign(obj, {cost: 7, star: 3}),
 )
 
-const CHESSES_4C3S: Chess[] = JSON.parse(JSON.stringify(CHESSES_4C)).map(
-  (obj: ChessProperty) =>
-    obj.name === 'LoneDruid'
-      ? Object.assign(obj, {cost: 7, star: 3})
-      : Object.assign(obj, {cost: 8, star: 3}),
+const CHESSES_4C3S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_4C),
+).map((obj: ChessProperty) =>
+  obj.name === 'LoneDruid'
+    ? Object.assign(obj, {cost: 7, star: 3})
+    : Object.assign(obj, {cost: 8, star: 3}),
 )
 
-const CHESSES_5C3S: Chess[] = JSON.parse(JSON.stringify(CHESSES_5C)).map(
-  (obj: ChessProperty) => Object.assign(obj, {cost: 9, star: 3}),
-)
+const CHESSES_5C3S: Chess[] = JSON.parse(
+  JSON.stringify(CHESSES_5C),
+).map((obj: ChessProperty) => Object.assign(obj, {cost: 9, star: 3}))
 
 const CHESSES_3S = [
   CHESSES_1C3S,
