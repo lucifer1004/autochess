@@ -7,7 +7,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.7.5
   '@babel/runtime-corejs2': 7.7.6
-  '@types/jest': 24.0.23
+  '@types/jest': 24.9.1
   '@types/node': 12.12.14
   '@types/webpack-env': 1.14.1
   '@typescript-eslint/eslint-plugin': 2.10.0_7b6753078134af5e5a3d073cd7e31128
@@ -1179,6 +1179,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-L7MBvwfNpe7yVPTXLn32df/EK+AMBFAFvZrRuArGs7npEWnlziUXK+5GMIUTI4NIuwok3XibsjXCs5HxviYXjg==
+  /@types/jest/24.9.1:
+    dependencies:
+      jest-diff: 24.9.0
+    dev: true
+    resolution:
+      integrity: sha512-Fb38HkXSVA4L8fGKEZ6le5bB8r6MRWlOCZbVuWZcmOMSCd2wCYOwN1ibj8daIoV9naq7aaOZjrLCoCMptKU/4Q==
   /@types/json-schema/7.0.3:
     dev: true
     resolution:
@@ -6809,6 +6815,9 @@ packages:
       node: '>=6'
     peerDependencies:
       jest-resolve: '*'
+    peerDependenciesMeta:
+      jest-resolve:
+        optional: true
     resolution:
       integrity: sha512-pgFw2tm54fzgYvc/OHrnysABEObZCUNFnhjoRjaVOCN8NYc032/gVjPaHD4Aq6ApkSieWtfKAFQtmDKAmhupnQ==
   /jest-regex-util/24.9.0:
@@ -12518,7 +12527,7 @@ packages:
 specifiers:
   '@babel/core': 7.7.5
   '@babel/runtime-corejs2': 7.7.6
-  '@types/jest': 24.0.23
+  '@types/jest': 24.9.1
   '@types/node': 12.12.14
   '@types/webpack-env': 1.14.1
   '@typescript-eslint/eslint-plugin': 2.10.0
