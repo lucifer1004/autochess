@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "register-service-worker": "1.6.2",
-    "vue": "2.6.10",
+    "vue": "2.7.16",
     "vue-router": "3.1.3",
     "vuetify": "2.1.13",
     "vuex": "3.1.2"
@@ -76,7 +76,7 @@
     "vue-jest": "3.0.5",
     "vue-loader": "15.7.2",
     "vue-style-loader": "4.1.2",
-    "vue-template-compiler": "2.6.10",
+    "vue-template-compiler": "2.7.16",
     "webpack": "4.41.2",
     "yorkie": "2.0.0"
   }
