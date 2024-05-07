@@ -28,7 +28,7 @@
     "@babel/runtime-corejs2": "7.7.6",
     "@types/jest": "24.0.23",
     "@types/node": "12.12.14",
-    "@types/webpack-env": "1.14.1",
+    "@types/webpack-env": "1.18.5",
     "@typescript-eslint/eslint-plugin": "2.10.0",
     "@typescript-eslint/parser": "2.10.0",
     "@typescript-eslint/typescript-estree": "2.10.0",
