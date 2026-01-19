@@ -71,7 +71,7 @@
     "ts-jest": "24.2.0",
     "ts-loader": "6.2.1",
     "tslib": "1.10.0",
-    "typescript": "3.7.3",
+    "typescript": "3.9.10",
     "url-loader": "3.0.0",
     "vue-jest": "3.0.5",
     "vue-loader": "15.7.2",
